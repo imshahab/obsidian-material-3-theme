@@ -382,15 +382,8 @@
 	--background-modifier-message: rgba(0, 0, 0, 0.9);
 
 	/* Interactive */
-	--interactive-normal: var(--md-sys-surface);
-	--interactive-hover: var(--md-sys-surface-variant);
-
-	/* TODO */
-	--interactive-accent-hsl: var(--color-accent-hsl);
-
-	/* These two use Primary rather than Primary Container, making the UI fairly dull.
-	 * Maybe they should use Primary Container instead?
-	 */
+	--interactive-normal: var(--md-sys-surface-container-highest);
+	--interactive-hover: var(--md-sys-surface-variant); /* To be checked */
 	--interactive-accent: var(--md-sys-primary);
 	--interactive-accent-hover: rgb(from var(--md-sys-primary) r g b / 0.9);
 
@@ -400,7 +393,7 @@
 	--scrollbar-thumb-bg: var(--md-sys-outline);
 
 	/* Shadows */
-	/* --input-shadow: unset; */
+	--input-shadow: unset;
 	--shadow-s: unset;
 	--shadow-l: unset;
 
