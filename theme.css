@@ -379,8 +379,8 @@
 	--background-modifier-message: var(--md-sys-inverse-surface);
 	--background-modifier-form-field: var(--md-sys-surface-container-lowest);
 
-	/* TODO */
-	--background-modifier-message: rgba(0, 0, 0, 0.9);
+	/* Modals */
+	--modal-radius: var(--md-sys-shape-corner-medium);
 
 	/* Interactive */
 	--interactive-normal: var(--md-sys-surface-container-highest);
