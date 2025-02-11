@@ -152,6 +152,8 @@
 	--md-sys-shape-corner-extra-large: 28px;
 	--md-sys-shape-corner-extra-large-top: 28px 28px 0 0;
 	--md-sys-shape-corner-full: 1000px;
+
+	--md-sys-state-hover-state-layer-opacity: 0.08;
 }
 
 .theme-light {
@@ -352,7 +354,7 @@ body, .theme-light, .theme-dark {
 	--background-secondary-alt: var(--md-sys-surface-container-highest);
 
 	/* To be checked */
-	--background-modifier-hover: rgba(from var(--md-sys-primary) r g b / 0.08);
+	--background-modifier-hover: rgba(from var(--md-sys-primary) r g b / var(--md-sys-state-hover-state-layer-opacity));
 
 	--background-modifier-border: var(--md-sys-outline-variant);
 
@@ -367,6 +369,8 @@ body, .theme-light, .theme-dark {
 	--background-modifier-error-hover: var(--md-sys-error);
 	--background-modifier-success-rgb: var(--md-extended-green-color-rgb);
 	--background-modifier-success: var(--md-extended-green-color);
+
+	/* TODO */
 	--background-modifier-message: rgba(0, 0, 0, 0.9);
 
 	/* Interactive */
