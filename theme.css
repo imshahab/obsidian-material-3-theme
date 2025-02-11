@@ -387,9 +387,9 @@
 	--interactive-accent-hover: rgb(from var(--md-sys-primary) r g b / 0.9);
 
 	/* Scrollbars */
-	--scrollbar-active-thumb-bg: rgba(var(--mono-rgb-100), 0.2);
-	--scrollbar-bg: rgba(var(--mono-rgb-100), 0.05);
-	--scrollbar-thumb-bg: var(--md-sys-outline);
+	--scrollbar-active-thumb-bg: var(--md-sys-outline);
+	--scrollbar-bg: var(--md-sys-outline);
+	--scrollbar-thumb-bg: var(--md-sys-outline-variant);
 
 	/* Shadows */
 	--input-shadow: unset;
