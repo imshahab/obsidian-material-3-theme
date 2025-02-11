@@ -24,7 +24,8 @@
     --md-sys-on-tertiary: rgb(255, 255, 255);
     --md-sys-tertiary-container: rgb(196, 57, 171);
     --md-sys-on-tertiary-container: rgb(255, 255, 255);
-    --md-sys-error: rgb(186, 26, 26);
+	--md-sys-error-rgb: 186, 26, 26;
+    --md-sys-error: rgb(var(--md-sys-error-rgb));
     --md-sys-on-error: rgb(255, 255, 255);
     --md-sys-error-container: rgb(255, 218, 214);
     --md-sys-on-error-container: rgb(65, 0, 2);
@@ -60,7 +61,8 @@
     --md-sys-surface-container: rgb(242, 235, 249);
     --md-sys-surface-container-high: rgb(236, 229, 244);
     --md-sys-surface-container-highest: rgb(231, 224, 238);
-    --md-extended-green-color: rgb(0, 108, 73);
+	--md-extended-green-color-rgb: 0, 108, 73;
+    --md-extended-green-color: rgb(var(--md-extended-green-color-rgb));
     --md-extended-green-on-color: rgb(255, 255, 255);
     --md-extended-green-color-container: rgb(37, 195, 137);
     --md-extended-green-on-color-container: rgb(0, 40, 24);
@@ -108,7 +110,8 @@
     --md-sys-on-tertiary: rgb(94, 0, 81);
     --md-sys-tertiary-container: rgb(192, 54, 167);
     --md-sys-on-tertiary-container: rgb(255, 255, 255);
-    --md-sys-error: rgb(255, 180, 171);
+	--md-sys-error-rgb: 255, 180, 171;
+    --md-sys-error: rgb(var(--md-sys-error-rgb));
     --md-sys-on-error: rgb(105, 0, 5);
     --md-sys-error-container: rgb(147, 0, 10);
     --md-sys-on-error-container: rgb(255, 218, 214);
@@ -144,7 +147,8 @@
     --md-sys-surface-container: rgb(33, 30, 40);
     --md-sys-surface-container-high: rgb(43, 40, 51);
     --md-sys-surface-container-highest: rgb(54, 51, 62);
-    --md-extended-green-color: rgb(77, 223, 162);
+	--md-extended-green-color-rgb: 77, 223, 162;
+    --md-extended-green-color: rgb(var(--md-extended-green-color-rgb));
     --md-extended-green-on-color: rgb(0, 56, 36);
     --md-extended-green-color-container: rgb(0, 173, 119);
     --md-extended-green-on-color-container: rgb(0, 7, 3);
