@@ -405,6 +405,7 @@
 	/* Texts */
 	--text-accent: var(--md-sys-primary);
 	--text-on-accent: var(--md-sys-on-primary);
+	--text-faint: var(--md-sys-on-surface-variant);
 
 	/* Undocumented */
 	/* For the scrim opacity, see https://github.com/material-components/material-components-android/issues/4295 */
