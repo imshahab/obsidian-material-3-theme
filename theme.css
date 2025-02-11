@@ -347,7 +347,8 @@ body, .theme-light, .theme-dark {
 	--toggle-thumb-width: 24px;
 	
 	--slider-thumb-radius: var(--md-sys-shape-corner-full);
-	--font-text-theme: "Roboto", serif;
+	--font-interface-theme: "Roboto";
+	--font-text-theme: "Roboto";
 
 	/* Backgrounds */
 	--background-primary: var(--md-sys-surface);
