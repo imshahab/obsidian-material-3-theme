@@ -98,6 +98,7 @@
 }
 
 .theme-dark {
+	--md-sys-primary-hsl: 255, 100%, 87.1%;
 	--md-sys-primary: rgb(206, 189, 255);
 	--md-sys-surface-tint: rgb(206, 189, 255);
 	--md-sys-on-primary: rgb(57, 0, 148);
