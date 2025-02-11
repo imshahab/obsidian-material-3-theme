@@ -376,6 +376,8 @@
 	--background-modifier-error-hover: var(--md-sys-error);
 	--background-modifier-success-rgb: var(--md-extended-green-color-rgb);
 	--background-modifier-success: var(--md-extended-green-color);
+	--background-modifier-message: var(--md-sys-inverse-surface);
+	--background-modifier-form-field: var(--md-sys-surface-container-lowest);
 
 	/* TODO */
 	--background-modifier-message: rgba(0, 0, 0, 0.9);
