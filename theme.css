@@ -442,6 +442,11 @@
 	color: var(--md-sys-on-error);
 }
 
+button.mod-warning {
+	background-color: var(--background-modifier-error);
+	--text-color: var(--md-sys-on-error);
+}
+
 .workspace-tab-header.is-active::before,
 .workspace-tab-header.is-active::after {
 	display: none;
