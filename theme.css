@@ -390,6 +390,7 @@ body, .theme-light, .theme-dark {
 	--shadow-l: unset;
 
 	/* Undocumented */
+	/* For the scrim opacity, see https://github.com/material-components/material-components-android/issues/4295 */
 	--background-modifier-cover: rgba(from var(--md-sys-scrim) r g b / 0.32);
 }
 
