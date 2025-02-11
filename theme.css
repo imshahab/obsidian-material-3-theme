@@ -404,11 +404,23 @@
 
 .checkbox-container {
 	box-shadow: unset;
-	background-color: var(--md-sys-surface-container-high);
+	background-color: var(--md-sys-surface-container-highest);
 }
 
 .checkbox-container:hover {
-	box-shadow: inset 0px 0px 0px 1000px var(--background-modifier-hover);
+	box-shadow: inset 0px 0px 0px 1000px hsl(from var(--md-sys-surface-container-highest) h s calc(l - 4));
+}
+
+.checkbox-container.is-enabled:hover {
+	box-shadow: inset 0px 0px 0px 1000px hsl(from var(--interactive-accent) h s calc(l + 24));
+}
+
+.checkbox-container::after {
+	background-color: var(--md-sys-outline);
+}
+
+.checkbox-container.is-enabled::after {
+	background-color: var(--md-sys-on-primary);
 }
 
 .workspace-tab-header.is-active::before,
