@@ -384,7 +384,11 @@
 
 	/* Interactive */
 	--interactive-normal: var(--md-sys-surface-container-highest);
-	--interactive-hover: var(--md-sys-surface-variant); /* To be checked */
+
+	/* FIXME: Using --background-modifier-hover, but this should be the color of the state layer,
+	 * not that of the container. More CSS will be needed for this.
+	 */
+	--interactive-hover: var(--background-modifier-hover);
 	--interactive-accent: var(--md-sys-primary);
 	--interactive-accent-hover: rgb(from var(--md-sys-primary) r g b / 0.9);
 
