@@ -329,8 +329,13 @@
 }
 
 
-body, .theme-light, .theme-dark {
-/* .abc { */
+.theme-light,
+.theme-dark {
+	/* Accent color */
+	--color-accent: var(--md-sys-primary);
+	--color-accent-hsl: var(--md-sys-primary-hsl);
+
+	/* Radiuses */
 	--radius-s: var(--md-sys-shape-corner-small);
 	--radius-m: var(--md-sys-shape-corner-medium);
 	--radius-l: var(--md-sys-shape-corner-large);
