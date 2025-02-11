@@ -426,6 +426,16 @@
 	background-color: var(--md-sys-on-primary);
 }
 
+.tooltip {
+	color: var(--md-sys-inverse-on-surface);
+}
+
+.tooltip.mod-error {
+	width: 200px;
+	background-color: var(--background-modifier-error);
+	color: var(--md-sys-on-error);
+}
+
 .workspace-tab-header.is-active::before,
 .workspace-tab-header.is-active::after {
 	display: none;
