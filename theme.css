@@ -497,7 +497,7 @@ button.mod-warning {
 
 
 .setting-item-control>textarea,
-.setting-item-control>input {
+.setting-item-control>input:not(.slider) {
 	background: var(--md-sys-surface-container-highest);
 	border: 0px solid var(--background-modifier-border);
 	border-radius: var(--md-sys-shape-corner-extra-small-top);
@@ -506,12 +506,12 @@ button.mod-warning {
 }
 
 .setting-item-control>textarea:hover,
-.setting-item-control>input:hover {
+.setting-item-control>input:not(.slider):hover {
 	border-bottom: 1px solid var(--md-sys-on-surface-variant);
 }
 
 .setting-item-control>textarea:focus,
-.setting-item-control>input:focus {
+.setting-item-control>input:not(.slider):focus {
 	border-bottom: 3px solid var(--md-sys-primary);
 }
 
