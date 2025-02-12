@@ -405,6 +405,10 @@
 	--shadow-s: unset;
 	--shadow-l: unset;
 
+	/* Sliders */
+	--slider-thumb-border-width: 0px;
+	--slider-track-background: var(--md-sys-secondary-container);
+
 	/* Texts */
 	--text-accent: var(--md-sys-primary);
 	--text-on-accent: var(--md-sys-on-primary);
@@ -450,6 +454,21 @@
 button.mod-warning {
 	background-color: var(--background-modifier-error);
 	--text-color: var(--md-sys-on-error);
+}
+
+
+
+input[type='range']::-webkit-slider-thumb {
+	background: var(--md-sys-primary);
+	box-shadow: unset;
+}
+
+input[type='range']::-webkit-slider-thumb:hover,
+input[type='range']::-webkit-slider-thumb:active,
+body:not(.is-mobile)input[type=range]:focus::-webkit-slider-thumb,
+body:not(.is-mobile) input[type=range]:focus-visible::-webkit-slider-thumb {
+	background: var(--md-sys-primary);
+	box-shadow: unset;
 }
 
 
