@@ -431,6 +431,32 @@
 	--background-modifier-cover: rgba(from var(--md-sys-scrim) r g b / 0.32);
 }
 
+
+
+button {
+	padding: 0 24px 0 24px;
+}
+
+button:not(.clickable-icon) {
+	background-color: unset;
+	--text-color: var(--md-sys-primary);
+	outline: 1px solid var(--md-sys-outline);
+}
+
+button.mod-cta {
+	background-color: var(--md-sys-primary);
+	--text-color: var(--md-sys-on-primary);
+	outline: none;
+}
+
+button.mod-warning {
+	background-color: var(--background-modifier-error);
+	--text-color: var(--md-sys-on-error);
+	outline: none;
+}
+
+
+
 .checkbox-container {
 	box-shadow: unset;
 	background-color: var(--md-sys-surface-container-highest);
@@ -450,42 +476,6 @@
 
 .checkbox-container.is-enabled::after {
 	background-color: var(--md-sys-on-primary);
-}
-
-
-
-.tooltip {
-	color: var(--md-sys-inverse-on-surface);
-}
-
-.tooltip.mod-error {
-	width: 200px;
-	background-color: var(--background-modifier-error);
-	color: var(--md-sys-on-error);
-}
-
-
-
-button {
-	padding: 0 24px 0 24px;
-}
-
-button:not(.clickable-icon) {
-	background-color: unset;
-	--text-color: var(--md-sys-primary);
-	outline: 1px solid var(--md-sys-outline);
-}
-
-button.mod-cta {
-	background-color: var(--md-sys-primary);
-    --text-color: var(--md-sys-on-primary);
-	outline: none;
-}
-
-button.mod-warning {
-	background-color: var(--background-modifier-error);
-	--text-color: var(--md-sys-on-error);
-	outline: none;
 }
 
 
@@ -553,6 +543,18 @@ body:not(.is-mobile) input[type=range]:focus-visible::-webkit-slider-thumb {
 		background-color: var(--background-modifier-error);
 		color: var(--md-sys-on-error);
 	}
+}
+
+
+
+.tooltip {
+	color: var(--md-sys-inverse-on-surface);
+}
+
+.tooltip.mod-error {
+	width: 200px;
+	background-color: var(--background-modifier-error);
+	color: var(--md-sys-on-error);
 }
 
 
