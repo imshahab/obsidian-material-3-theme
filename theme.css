@@ -379,6 +379,10 @@
 	--background-modifier-message: var(--md-sys-inverse-surface);
 	--background-modifier-form-field: var(--md-sys-surface-container-lowest);
 
+	/* Dropdowns */
+	--dropdown-background-position: right 16px top 50%, 0 0;
+	--dropdown-background-size: 18px 18px;
+
 	/* Icons */
 	--icon-opacity: 1;
 
@@ -388,6 +392,9 @@
 	/* Nav items */
 	--nav-item-background-active: var(--md-sys-secondary-container);
 	--nav-item-color-active: var(--md-sys-on-secondary-container);
+
+	/* Inputs */
+	--input-height: 40px;
 
 	/* Interactive */
 	--interactive-normal: var(--md-sys-surface-container-highest);
@@ -445,6 +452,8 @@
 	background-color: var(--md-sys-on-primary);
 }
 
+
+
 .tooltip {
 	color: var(--md-sys-inverse-on-surface);
 }
@@ -455,9 +464,37 @@
 	color: var(--md-sys-on-error);
 }
 
+
+
+button {
+	padding: 0 24px 0 24px;
+}
+
+button:not(.clickable-icon) {
+	background-color: unset;
+	--text-color: var(--md-sys-primary);
+	outline: 1px solid var(--md-sys-outline);
+}
+
+button.mod-cta {
+	background-color: var(--md-sys-primary);
+    --text-color: var(--md-sys-on-primary);
+	outline: none;
+}
+
 button.mod-warning {
 	background-color: var(--background-modifier-error);
 	--text-color: var(--md-sys-on-error);
+	outline: none;
+}
+
+
+
+.dropdown {
+	padding: 0 42px 0 24px;
+	outline: 1px solid var(--md-sys-outline);
+	background-color: unset;
+	color: var(--md-sys-primary);
 }
 
 
