@@ -496,6 +496,27 @@ button.mod-warning {
 
 
 
+.setting-item-control>textarea,
+.setting-item-control>input {
+	background: var(--md-sys-surface-container-highest);
+	border: 0px solid var(--background-modifier-border);
+	border-radius: var(--md-sys-shape-corner-extra-small-top);
+	color: var(--md-sys-on-surface);
+	border-bottom: 1px solid var(--md-sys-on-surface-variant);
+}
+
+.setting-item-control>textarea:hover,
+.setting-item-control>input:hover {
+	border-bottom: 1px solid var(--md-sys-on-surface-variant);
+}
+
+.setting-item-control>textarea:focus,
+.setting-item-control>input:focus {
+	border-bottom: 3px solid var(--md-sys-primary);
+}
+
+
+
 input[type='range']::-webkit-slider-thumb {
 	background: var(--md-sys-primary);
 	box-shadow: unset;
