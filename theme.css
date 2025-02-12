@@ -381,7 +381,7 @@
 
 	/* Icons */
 	--icon-opacity: 1;
-	
+
 	/* Modals */
 	--modal-radius: var(--md-sys-shape-corner-medium);
 
@@ -496,7 +496,7 @@ body:not(.is-mobile) input[type=range]:focus-visible::-webkit-slider-thumb {
 
 @media (hover: hover) {
 	.setting-hotkey-icon:hover .svg-icon {
-	  color: var(--md-sys-on-error);
+		color: var(--md-sys-on-error);
 	}
 }
 
