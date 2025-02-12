@@ -385,6 +385,10 @@
 	/* Modals */
 	--modal-radius: var(--md-sys-shape-corner-medium);
 
+	/* Nav items */
+	--nav-item-background-active: var(--md-sys-secondary-container);
+	--nav-item-color-active: var(--md-sys-on-secondary-container);
+
 	/* Interactive */
 	--interactive-normal: var(--md-sys-surface-container-highest);
 
@@ -454,6 +458,13 @@
 button.mod-warning {
 	background-color: var(--background-modifier-error);
 	--text-color: var(--md-sys-on-error);
+}
+
+
+
+.nav-file-title,
+.nav-folder-title {
+	border-radius: var(--radius-l);
 }
 
 
