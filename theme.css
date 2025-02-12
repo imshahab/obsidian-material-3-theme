@@ -344,16 +344,8 @@
 	--input-radius: var(--md-sys-shape-corner-extra-large);
 	--tab-radius-active: var(--md-sys-shape-corner-extra-small-top);
 	--checkbox-radius: 2px;
-
-	/* TODO */
-	--toggle-border-width: 4px;
-	--toggle-width: 52px;
-	--toggle-radius: var(--md-sys-shape-corner-full);
-	--toggle-thumb-radius: var(--md-sys-shape-corner-full);
-	--toggle-thumb-height: 24px;
-	--toggle-thumb-width: 24px;
-
 	--slider-thumb-radius: var(--md-sys-shape-corner-full);
+
 	--font-interface-theme: "Roboto";
 	--font-text-theme: "Roboto";
 
@@ -458,24 +450,100 @@ button.mod-warning {
 
 
 .checkbox-container {
+	--switch-track-height: 32px;
+	--switch-track-width: 52px;
+	--switch-track-outline-color: var(--md-sys-outline);
+	--switch-track-outline-width: 2px;
+	--switch-track-selected-color: var(--md-sys-primary);
+	--switch-track-unselected-color: var(--md-sys-surface-container-highest);
+
+	height: var(--switch-track-height);
+	width: var(--switch-track-width);
+
 	box-shadow: unset;
 	background-color: var(--md-sys-surface-container-highest);
+	border: var(--switch-track-outline-width) solid var(--switch-track-outline-color);
+	transition: box-shadow 0.15s ease-in-out;
 }
 
 .checkbox-container:hover {
-	box-shadow: inset 0px 0px 0px 1000px hsl(from var(--md-sys-surface-container-highest) h s calc(l - 4));
+	box-shadow: unset;
+}
+
+.checkbox-container.is-enabled {
+	background-color: var(--switch-track-selected-color);
+	border: 0;
 }
 
 .checkbox-container.is-enabled:hover {
-	box-shadow: inset 0px 0px 0px 1000px hsl(from var(--interactive-accent) h s calc(l + 24));
+	box-shadow: unset;
 }
 
 .checkbox-container::after {
-	background-color: var(--md-sys-outline);
+	--switch-handle-unselected-height: 16px;
+	--switch-handle-selected-height: 24px;
+	--switch-handle-pressed-height: 28px;
+	--switch-handle-unselected-width: 16px;
+	--switch-handle-selected-width: 24px;
+	--switch-handle-pressed-width: 28px;
+	--switch-handle-unselected-color: var(--md-sys-outline);
+	--switch-handle-selected-color: var(--md-sys-on-primary);
+	--switch-handle-unselected-outline-width: calc((40px / 2) - (var(--switch-handle-unselected-width) / 2));
+	--switch-handle-selected-outline-width: calc((40px / 2) - (var(--switch-handle-selected-width) / 2));
+	--switch-handle-pressed-outline-width: calc((40px / 2) - (var(--switch-handle-pressed-width) / 2));
+
+	height: var(--switch-handle-unselected-height);
+	width: var(--switch-handle-unselected-width);
+
+	background-color: var(--switch-handle-unselected-color);
+	margin: 6px 0 0 6px;
+	transform: unset;
+	transition: margin 0.1s ease-in-out, width 0.1s ease-in-out, height 0.1s ease-in-out;
+}
+
+.checkbox-container:hover::after {
+	background-color: var(--md-sys-on-surface-variant);
+
+	/* State layer emulation */
+	outline: var(--switch-handle-unselected-outline-width) solid rgb(from var(--md-sys-on-surface) r g b / var(--md-sys-state-hover-state-layer-opacity));
+}
+
+.checkbox-container:active::after {
+	height: var(--switch-handle-pressed-height);
+	width: var(--switch-handle-pressed-width);
+
+	margin: 0;
+
+	/* State layer emulation */
+	outline: var(--switch-handle-pressed-outline-width) solid rgb(from var(--md-sys-on-surface) r g b / var(--md-sys-state-hover-state-layer-opacity));
 }
 
 .checkbox-container.is-enabled::after {
-	background-color: var(--md-sys-on-primary);
+	height: var(--switch-handle-selected-height);
+	width: var(--switch-handle-selected-width);
+
+	background-color: var(--switch-handle-selected-color);
+	margin: 4px 0 0 calc(52px - 24px - 4px);
+	transform: unset;
+}
+
+.checkbox-container.is-enabled:hover::after {
+	background-color: var(--md-sys-primary-container);
+
+	/* State layer emulation */
+	outline: var(--switch-handle-selected-outline-width) solid rgb(from var(--md-sys-primary) r g b / var(--md-sys-state-hover-state-layer-opacity));
+}
+
+.checkbox-container.is-enabled:active::after {
+	height: var(--switch-handle-pressed-height);
+	width: var(--switch-handle-pressed-width);
+
+	left: revert;
+	margin: 2px 0 0 calc(52px - 24px - 6px);
+	transform: unset;
+
+	/* State layer emulation */
+	outline: var(--switch-handle-pressed-outline-width) solid rgb(from var(--md-sys-primary) r g b / var(--md-sys-state-hover-state-layer-opacity));
 }
 
 
