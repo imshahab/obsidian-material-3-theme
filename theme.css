@@ -448,6 +448,44 @@ button.mod-warning {
 	--text-color: var(--md-sys-on-error);
 }
 
+
+
+.setting-hotkey {
+	border-radius: var(--md-sys-shape-corner-small);
+	background-color: var(--md-sys-secondary-container);
+	color: var(--md-sys-on-secondary-container);
+}
+
+.setting-hotkey-icon .svg-icon {
+	color: var(--md-sys-on-secondary-container);
+	opacity: 1;
+}
+
+.setting-hotkey.mod-empty {
+	outline: 1px solid var(--md-sys-outline-variant);
+	background-color: unset;
+	color: var(--md-sys-on-surface-variant);
+}
+
+.setting-hotkey-icon.mod-empty .svg-icon {
+	color: var(--md-sys-on-surface-variant);
+}
+
+@media (hover: hover) {
+	.setting-hotkey-icon:hover .svg-icon {
+	  color: var(--md-sys-on-error);
+	}
+}
+
+@media (hover: hover) {
+	.setting-delete-hotkey:hover {
+		background-color: var(--background-modifier-error);
+		color: var(--md-sys-on-error);
+	}
+}
+
+
+
 .workspace-tab-header.is-active::before,
 .workspace-tab-header.is-active::after {
 	display: none;
