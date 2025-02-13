@@ -1,9 +1,3 @@
 {
-    "extra-files": [
-        {
-            "type": "json",
-            "path": "manifest.json",
-            "jsonpath": "$.version"
-        }
-    ]
+    ".": "1.0.0"
 }
