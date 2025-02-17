@@ -332,6 +332,9 @@
 	--md-sys-state-pressed-state-layer-opacity: 0.1;
 	--md-sys-state-drag-state-layer-opacity: 0.16;
 
+	--md-sys-state-focus-indicator-thickness: 3px;
+	--md-sys-state-focus-indicator-offset: 2px;
+
 	--md-sys-motion-easing-standard: cubic-bezier(0.2, 0, 0, 1);
 	--md-sys-motion-easing-standard-accelerate: cubic-bezier(0.3, 0, 1, 1);
 	--md-sys-motion-easing-standard-decelerate: cubic-bezier(0, 0, 0, 1);
@@ -389,6 +392,7 @@
 	--dropdown-background-size: 18px 18px;
 
 	/* Icons */
+	--icon-color-focused: var(--md-sys-on-surface-variant);
 	--icon-opacity: 1;
 
 	/* Modals */
@@ -585,6 +589,46 @@ button.mod-warning {
 	outline: 1px solid var(--md-sys-outline);
 	background-color: unset;
 	color: var(--md-sys-primary);
+}
+
+
+
+.clickable-icon:hover {
+	background-color: unset;
+}
+
+.clickable-icon:focus-visible {
+	box-shadow: unset;
+	outline: unset;
+}
+
+.clickable-icon:active {
+	background-color: unset;
+}
+
+.clickable-icon::after {
+	/* Not using 40dp because not all icons are 24dp in Obsidian. */
+	--state-layer-base-color: var(--md-sys-on-surface-variant);
+	--state-layer-size: calc(40 * var(--icon-size) / 24);
+	content: '';
+	position: absolute;
+	width: var(--state-layer-size);
+	height: var(--state-layer-size);
+
+	border-radius: var(--md-sys-shape-corner-full);
+}
+
+.clickable-icon:hover::after {
+	background-color: rgb(from var(--state-layer-base-color) r g b / var(--md-sys-state-hover-state-layer-opacity));
+}
+
+.clickable-icon:focus-visible::after {
+	outline: var(--md-sys-state-focus-indicator-thickness) solid var(--md-sys-secondary);
+	outline-offset: var(--md-sys-state-focus-indicator-offset);
+}
+
+.clickable-icon:active::after {
+	background-color: rgb(from var(--state-layer-base-color) r g b / var(--md-sys-state-pressed-state-layer-opacity));
 }
 
 
