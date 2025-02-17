@@ -423,6 +423,7 @@
 	--slider-track-background: var(--md-sys-secondary-container);
 
 	/* Texts */
+	--text-normal: var(--md-sys-on-surface);
 	--text-accent: var(--md-sys-primary);
 	--text-on-accent: var(--md-sys-on-primary);
 	--text-faint: var(--md-sys-on-surface-variant);
