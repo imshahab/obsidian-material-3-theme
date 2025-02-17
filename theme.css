@@ -364,11 +364,14 @@
 	--background-primary-alt: var(--md-sys-surface-container-low);
 	--background-secondary: var(--md-sys-surface-container);
 	--background-secondary-alt: var(--md-sys-surface-container-highest);
-	--background-modifier-hover: rgba(from var(--md-sys-primary) r g b / var(--md-sys-state-hover-state-layer-opacity));
+	
+	/* This should be replaced by a state layer as much as possible. */
+	--background-modifier-hover: rgba(from var(--md-sys-on-surface-variant) r g b / var(--md-sys-state-hover-state-layer-opacity));
+
 	--background-modifier-border: var(--md-sys-outline-variant);
 
 	/* Obsidian uses a darker tone for the following.
-	 * It should be OK to use Outline variant for both.
+	 * It should be OK to use Outline Variant for both.
 	 */
 	--background-modifier-border-hover: var(--md-sys-outline-variant);
 	--background-modifier-border-focus: var(--md-sys-outline-variant);
