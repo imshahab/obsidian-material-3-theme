@@ -350,18 +350,6 @@
 	--color-accent: var(--md-sys-primary);
 	--color-accent-hsl: var(--md-sys-primary-hsl);
 
-	/* Radiuses */
-	--radius-s: var(--md-sys-shape-corner-small);
-	--radius-m: var(--md-sys-shape-corner-medium);
-	--radius-l: var(--md-sys-shape-corner-large);
-	--input-radius: var(--md-sys-shape-corner-extra-large);
-	--tab-radius-active: var(--md-sys-shape-corner-extra-small-top);
-	--checkbox-radius: 2px;
-	--slider-thumb-radius: var(--md-sys-shape-corner-full);
-
-	--font-interface-theme: "Roboto";
-	--font-text-theme: "Roboto";
-
 	/* Backgrounds */
 	--background-primary: var(--md-sys-surface);
 	--background-primary-alt: var(--md-sys-surface-container-low);
@@ -387,23 +375,12 @@
 	--background-modifier-message: var(--md-sys-inverse-surface);
 	--background-modifier-form-field: var(--md-sys-surface-container-lowest);
 
-	/* Dropdowns */
-	--dropdown-background-position: right 16px top 50%, 0 0;
-	--dropdown-background-size: 18px 18px;
-
 	/* Icons */
 	--icon-color-focused: var(--md-sys-on-surface-variant);
-	--icon-opacity: 1;
-
-	/* Modals */
-	--modal-radius: var(--md-sys-shape-corner-medium);
 
 	/* Nav items */
 	--nav-item-background-active: var(--md-sys-secondary-container);
 	--nav-item-color-active: var(--md-sys-on-secondary-container);
-
-	/* Inputs */
-	--input-height: 40px;
 
 	/* Interactive */
 	--interactive-normal: var(--md-sys-surface-container-highest);
@@ -426,7 +403,6 @@
 	--shadow-l: unset;
 
 	/* Sliders */
-	--slider-thumb-border-width: 0px;
 	--slider-track-background: var(--md-sys-secondary-container);
 
 	/* Texts */
@@ -439,6 +415,42 @@
 	/* Undocumented */
 	/* For the scrim opacity, see https://github.com/material-components/material-components-android/issues/4295 */
 	--background-modifier-cover: rgba(from var(--md-sys-scrim) r g b / 0.32);
+}
+
+body {
+	/* Checkboxes (switches, actually) */
+	--checkbox-radius: 2px;
+
+	/* Dropdowns */
+	--dropdown-background-position: right 16px top 50%, 0 0;
+	--dropdown-background-size: 18px 18px;
+
+	/* Fonts */
+	--font-interface-theme: "Roboto";
+	--font-text-theme: "Roboto";
+
+	/* Icons */
+	--icon-opacity: 1;
+
+	/* Inputs */
+	/* TODO: Check this value */
+	--input-height: 40px;
+	--input-radius: var(--md-sys-shape-corner-extra-large);
+
+	/* Modals */
+	--modal-radius: var(--md-sys-shape-corner-medium);
+
+	/* Radiuses */
+	--radius-s: var(--md-sys-shape-corner-small);
+	--radius-m: var(--md-sys-shape-corner-medium);
+	--radius-l: var(--md-sys-shape-corner-large);
+
+	/* Sliders */
+	--slider-thumb-border-width: 0px;
+	--slider-thumb-radius: var(--md-sys-shape-corner-full);
+
+	/* Tabs */
+	--tab-radius-active: var(--md-sys-shape-corner-extra-small-top);
 }
 
 
