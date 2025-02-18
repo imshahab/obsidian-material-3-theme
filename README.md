@@ -1,4 +1,4 @@
-# Obsidian Material 3 theme
+# Material 3 Obsidian theme
 
 ![Screenshot](screenshot.png)
 
