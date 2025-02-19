@@ -688,6 +688,56 @@ body:not(.is-mobile) input[type=range]:focus-visible::-webkit-slider-thumb {
 
 
 
+.search-input-container {
+	height: 40px;
+	display: flex;
+	flex-direction: row;
+    align-items: center;
+	padding: 0 8px;
+	gap: 8px;
+
+	background-color: var(--md-sys-surface-container-highest);
+	border-radius: var(--md-sys-shape-corner-full);
+}
+
+.search-input-container::before {
+	position: unset;
+	background-color: var(--md-sys-on-surface);
+}
+
+.search-input-container input {
+	padding: unset;
+	flex: 1;
+
+	background-color: unset;
+	border: unset;
+	border-radius: unset;
+	color: var(--md-sys-on-surface);
+}
+
+.search-input-container input::placeholder {
+	color: var(--md-sys-on-surface-variant);
+}
+
+.search-input-container .search-input-clear-button {
+	position: unset;
+	width: unset;
+	height: unset;
+	margin: unset;
+}
+
+.search-input-container .input-right-decorator {
+	position: unset;
+	transform: unset;
+	color: var(--md-sys-on-surface-variant);
+}
+
+.search-input-container.mod-hotkey .clickable-icon {
+    padding: unset;
+}
+
+
+
 .setting-hotkey {
 	border-radius: var(--md-sys-shape-corner-small);
 	background-color: var(--md-sys-secondary-container);
