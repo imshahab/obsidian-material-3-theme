@@ -674,6 +674,27 @@ input.pdf-page-input:not(.mod-page-loading):focus,
 	border-bottom: 3px solid var(--md-sys-primary);
 }
 
+textarea:active,
+input.metadata-input-text:active,
+input[type='date']:active,
+input[type='datetime-local']:active,
+input[type='text']:active,
+input[type='search']:active,
+input[type='email']:active,
+input[type='password']:active,
+input[type='number']:active,
+textarea:focus,
+input.metadata-input-text:focus,
+input[type='date']:focus,
+input[type='datetime-local']:focus,
+input[type='text']:focus,
+input[type='search']:focus,
+input[type='email']:focus,
+input[type='password']:focus,
+input[type='number']:focus {
+	box-shadow: unset;
+}
+
 
 
 input[type='range']::-webkit-slider-thumb {
