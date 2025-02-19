@@ -656,10 +656,11 @@ input.pdf-page-input,
 .setting-item-control>textarea,
 .setting-item-control>input:not(.slider, [type='color']) {
 	background: var(--md-sys-surface-container-highest);
-	border: 0px solid var(--background-modifier-border);
+	border: unset;
+	border-bottom: 1px solid var(--md-sys-on-surface-variant);
 	border-radius: var(--md-sys-shape-corner-extra-small-top);
 	color: var(--md-sys-on-surface);
-	border-bottom: 1px solid var(--md-sys-on-surface-variant);
+	transition: border 0.15s var(--md-sys-motion-easing-standard);
 }
 
 input.pdf-page-input:not(.mod-page-loading):hover,
@@ -700,6 +701,20 @@ input[type='number']:focus {
 	background: rgb(from var(--md-sys-on-surface) r g b / 0.04);
 	color: rgb(from var(--md-sys-on-surface) r g b / 0.38);
 	border-bottom: 1px solid rgb(from var(--md-sys-on-surface) r g b / 0.38);
+}
+
+@media (hover: hover) {
+	textarea:hover,
+	input.metadata-input-text:hover,
+	input[type='date']:hover,
+	input[type='datetime-local']:hover,
+	input[type='text']:hover,
+	input[type='search']:hover,
+	input[type='email']:hover,
+	input[type='password']:hover,
+	input[type='number']:hover {
+		transition: border 0.15s var(--md-sys-motion-easing-standard);
+	}
 }
 
 
