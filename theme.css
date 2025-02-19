@@ -652,8 +652,9 @@ button.mod-warning {
 
 
 
+input.pdf-page-input,
 .setting-item-control>textarea,
-.setting-item-control>input:not(.slider) {
+.setting-item-control>input:not(.slider, [type='color']) {
 	background: var(--md-sys-surface-container-highest);
 	border: 0px solid var(--background-modifier-border);
 	border-radius: var(--md-sys-shape-corner-extra-small-top);
@@ -661,13 +662,15 @@ button.mod-warning {
 	border-bottom: 1px solid var(--md-sys-on-surface-variant);
 }
 
+input.pdf-page-input:not(.mod-page-loading):hover,
 .setting-item-control>textarea:hover,
-.setting-item-control>input:not(.slider):hover {
+.setting-item-control>input:not(.slider, [type='color']):hover {
 	border-bottom: 1px solid var(--md-sys-on-surface-variant);
 }
 
+input.pdf-page-input:not(.mod-page-loading):focus,
 .setting-item-control>textarea:focus,
-.setting-item-control>input:not(.slider):focus {
+.setting-item-control>input:not(.slider, [type='color']):focus {
 	border-bottom: 3px solid var(--md-sys-primary);
 }
 
