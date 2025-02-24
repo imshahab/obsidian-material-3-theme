@@ -765,6 +765,10 @@ body:not(.is-mobile) input[type=range]:focus-visible::-webkit-slider-thumb {
 	color: var(--md-sys-on-surface-variant);
 }
 
+.search-input-container input:not(:placeholder-shown) {
+	padding-inline-end: unset;
+}
+
 .search-input-container .search-input-clear-button {
 	position: unset;
 	width: unset;
@@ -780,6 +784,10 @@ body:not(.is-mobile) input[type=range]:focus-visible::-webkit-slider-thumb {
 
 .search-input-container.mod-hotkey .clickable-icon {
     padding: unset;
+}
+
+.global-search-input-container.search-input-container input:not(:placeholder-shown) {
+	padding-inline-end: unset;
 }
 
 
