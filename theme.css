@@ -603,7 +603,9 @@ button.mod-warning {
 	color: var(--md-sys-primary);
 }
 
-
+.clickable-icon {
+	position: relative;
+}
 
 .clickable-icon:hover {
 	background-color: unset;
