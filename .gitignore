@@ -1,12 +1,12 @@
 # vscode
-.vscode 
+.vscode/
 
 # Intellij
 *.iml
-.idea
+.idea/
 
 # npm
-node_modules
+node_modules/
 
 # Exclude sourcemaps
 *.map
@@ -14,5 +14,6 @@ node_modules
 # Exclude macOS Finder (System Explorer) View States
 .DS_Store
 
-_app.css
-m3/
+# Sass
+.sass-cache/
+theme.css
