@@ -1,53 +1,58 @@
-.workspace-drawer {
-  background-color: var(--md-sys-surface-container);
-}
+body.is-phone {
+  $background-color: var(--md-sys-surface-container-low);
 
-.workspace-drawer-inner {
-  background-color: var(--md-sys-surface-container);
-}
-
-.workspace-drawer-header .clickable-icon {
-  color: var(--md-sys-on-surface-variant);
-  height: 40px;
-  padding: 0;
-  width: 40px;
-}
-
-.workspace-drawer-active-tab-container {
-  background-color: var(--md-sys-surface-container);
-
-  .nav-header {
-    background-color: var(--md-sys-surface-container-highest);
-    border: unset;
-    min-height: 64px;
+  .workspace-drawer {
+    background-color: $background-color;
+    border-radius: var(--md-sys-shape-corner-large-end);
   }
 
-  .nav-buttons-container {
-    gap: 24px;
+  .workspace-drawer-inner {
+    background-color: $background-color;
+  }
 
-    .clickable-icon {
-      color: var(--md-sys-on-surface-variant);
-      height: 40px;
-      padding: 0;
-      max-width: 40px;
+  .workspace-drawer-header .clickable-icon {
+    color: var(--md-sys-on-surface-variant);
+    height: 40px;
+    padding: 0;
+    width: 40px;
+  }
+
+  .workspace-drawer-active-tab-container {
+    background-color: $background-color;
+
+    .nav-header {
+      background-color: var(--md-sys-surface-container-high);
+      border: unset;
+      min-height: 64px;
+    }
+
+    .nav-buttons-container {
+      gap: 24px;
+
+      .clickable-icon {
+        color: var(--md-sys-on-surface-variant);
+        height: 40px;
+        padding: 0;
+        max-width: 40px;
+      }
     }
   }
-}
 
-.workspace-drawer-active-tab-header {
-  background-color: transparent;
-  border: 1px solid var(--md-sys-outline);
-  border-radius: var(--md-sys-shape-corner-full);
-  padding-inline: 24px;
-  height: 40px;
+  .workspace-drawer-active-tab-header {
+    background-color: transparent;
+    border: 1px solid var(--md-sys-outline);
+    border-radius: var(--md-sys-shape-corner-full);
+    padding-inline: 24px;
+    height: 40px;
 
-  .workspace-drawer-active-tab-title,
-  .workspace-drawer-active-tab-icon,
-  .clickable-icon {
-    color: var(--md-sys-primary);
-  }
+    .workspace-drawer-active-tab-title,
+    .workspace-drawer-active-tab-icon,
+    .clickable-icon {
+      color: var(--md-sys-primary);
+    }
 
-  .clickable-icon {
-    padding: unset;
+    .clickable-icon {
+      padding: unset;
+    }
   }
 }
