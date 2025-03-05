@@ -1,0 +1,12 @@
+body:not(.is-phone) {
+  .modal-content {
+    .vertical-tab-nav-item {
+      border-radius: var(--md-sys-shape-corner-full);
+
+      &.is-active {
+        background-color: var(--md-sys-secondary-container);
+        color: var(--md-sys-on-secondary-container);
+      }
+    }
+  }
+}
