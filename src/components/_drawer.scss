@@ -6,8 +6,32 @@
   background-color: var(--md-sys-surface-container);
 }
 
+.workspace-drawer-header .clickable-icon {
+  color: var(--md-sys-on-surface-variant);
+  height: 40px;
+  padding: 0;
+  width: 40px;
+}
+
 .workspace-drawer-active-tab-container {
   background-color: var(--md-sys-surface-container);
+
+  .nav-header {
+    background-color: var(--md-sys-surface-container-highest);
+    border: unset;
+    min-height: 64px;
+  }
+
+  .nav-buttons-container {
+    gap: 24px;
+
+    .clickable-icon {
+      color: var(--md-sys-on-surface-variant);
+      height: 40px;
+      padding: 0;
+      max-width: 40px;
+    }
+  }
 }
 
 .workspace-drawer-active-tab-header {
@@ -17,7 +41,9 @@
   padding-inline: 24px;
   height: 40px;
 
-  .workspace-drawer-active-tab-title, .workspace-drawer-active-tab-icon, .clickable-icon {
+  .workspace-drawer-active-tab-title,
+  .workspace-drawer-active-tab-icon,
+  .clickable-icon {
     color: var(--md-sys-primary);
   }
 
