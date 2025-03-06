@@ -21,19 +21,21 @@ body.is-phone {
     background-color: $background-color;
 
     .nav-header {
+      align-content: center;
       background-color: var(--md-sys-surface-container-high);
       border: unset;
-      min-height: 64px;
+      min-height: calc(var(--safe-area-inset-bottom) + 64px);
+      padding-block: 0 var(--safe-area-inset-bottom);
     }
 
     .nav-buttons-container {
-      gap: 24px;
+      padding-inline: 16px;
 
       .clickable-icon {
         color: var(--md-sys-on-surface-variant);
-        height: 40px;
-        padding: 0;
-        max-width: 40px;
+        height: 48px;
+        padding: unset;
+        max-width: 48px;
       }
     }
   }
