@@ -305,6 +305,8 @@ button.mod-warning {
   height: var(--state-layer-size);
 
   border-radius: var(--md-sys-shape-corner-full);
+
+  pointer-events: none;
 }
 
 .clickable-icon:hover::after {
