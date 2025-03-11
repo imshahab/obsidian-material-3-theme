@@ -116,14 +116,11 @@
   }
 
   & {
-    button {
-      padding: 0 24px 0 24px;
-    }
-
     button:not(.clickable-icon) {
       background-color: unset;
       --text-color: #{map.get($colors, 'primary')};
       outline: 1px solid map.get($colors, 'outline');
+      padding: 0 24px 0 24px;
     }
 
     button.mod-cta {
