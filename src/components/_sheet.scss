@@ -1,69 +1,95 @@
-body.is-phone {
-  $background-color: var(--md-sys-surface-container-low);
+@use 'sass:map';
+@use '@material/web/tokens' as md-tokens;
 
-  .menu {
-    background-color: $background-color;
-    border-radius: var(--md-sys-shape-corner-extra-large-top);
-    margin-top: 72px;
-    padding: 0;
-  }
+@use '../tokens';
+@use '../utils';
 
-  .menu-grabber {
-    background-color: var(--md-sys-on-surface-variant);
-    border-radius: var(--md-sys-shape-corner-full);
-    height: 4px;
-    width: 32px;
-    margin: 22px auto;
-  }
+$_default: (
+  'md-sys-color': tokens.colors-light(),
+  'md-sys-shape':
+    md-tokens.md-sys-shape-values(
+      $exclude-custom-properties: true,
+    ),
+  'md-sys-typescale':
+    md-tokens.md-sys-typescale-values(
+      $exclude-custom-properties: true,
+    ),
+);
 
-  .menu-scroll {
-    background-color: $background-color;
-    display: block;
-    padding: 8px 0px;
-  }
+@mixin styles($deps: $_default) {
+  &.is-phone {
+    $background-color: map.get($deps, 'md-sys-color', 'surface-container-low');
 
-  .menu-separator {
-    margin: 8px 16px;
-    height: 1px;
+    .menu {
+      $shape: map.get($deps, 'md-sys-shape', 'corner-extra-large-top');
+      @include utils.shape-define-border-radius($shape);
 
-    &:nth-of-type(2) {
-      display: none;
-    }
-  }
-
-  .menu-item {
-    border-radius: var(--md-sys-shape-corner-none);
-
-    &.is-label {
-      border-radius: var(--md-sys-shape-corner-medium);
-      background-color: var(--md-sys-surface-container-highest);
-      margin-inline: 16px;
-      margin-bottom: 8px;
-      padding-inline: 16px;
+      background-color: $background-color;
+      margin-top: 72px;
+      padding: 0;
     }
 
-    &.tappable {
-      gap: 16px;
-      height: 56px;
-      padding-inline: 32px;
+    .menu-grabber {
+      background-color: map.get($deps, 'md-sys-color', 'on-surface-variant');
+      border-radius: map.get($deps, 'md-sys-shape', 'corner-full');
+      height: 4px;
+      width: 32px;
+      margin: 22px auto;
     }
-  }
 
-  .menu-item-icon {
-    align-items: center;
-    justify-content: center;
-
-    .svg-icon {
-      color: var(--md-sys-on-surface-variant);
-      height: 24px;
-      width: 24px;
+    .menu-scroll {
+      background-color: $background-color;
+      display: block;
+      padding: 8px 0px;
     }
-  }
 
-  .menu-item-title {
-    color: var(--md-sys-on-surface-variant);
-    font-size: 1rem;
-    line-height: 1.5rem;
-    letter-spacing: 0.03125rem;
+    .menu-separator {
+      margin: 8px 16px;
+      height: 1px;
+
+      &:nth-of-type(2) {
+        display: none;
+      }
+    }
+
+    .menu-item {
+      border-radius: map.get($deps, 'md-sys-shape', 'corner-none');
+
+      &.is-label {
+        border-radius: map.get($deps, 'md-sys-shape', 'corner-medium');
+        background-color: map.get(
+          $deps,
+          'md-sys-color',
+          'surface-container-highest'
+        );
+        margin-inline: 16px;
+        margin-bottom: 8px;
+        padding-inline: 16px;
+      }
+
+      &.tappable {
+        gap: 16px;
+        height: 56px;
+        padding-inline: 32px;
+      }
+    }
+
+    .menu-item-icon {
+      align-items: center;
+      justify-content: center;
+
+      .svg-icon {
+        color: map.get($deps, 'md-sys-color', 'on-surface-variant');
+        height: 24px;
+        width: 24px;
+      }
+    }
+
+    .menu-item-title {
+      color: map.get($deps, 'md-sys-color', 'on-surface-variant');
+      font-size: map.get($deps, 'md-sys-typescale', 'body-large-size');
+      line-height: map.get($deps, 'md-sys-typescale', 'body-large-line-height');
+      letter-spacing: map.get($deps, 'md-sys-typescale', 'body-large-tracking');
+    }
   }
 }

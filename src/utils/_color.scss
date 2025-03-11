@@ -1,0 +1,9 @@
+@use 'sass:color';
+
+@function to-hsl-components($color) {
+  @return color.channel($color, "hue", hsl), color.channel($color, "saturation", hsl), color.channel($color, "lightness", hsl);
+}
+
+@function to-rgb-components($color) {
+  @return color.channel($color, "red", rgb), color.channel($color, "green", rgb), color.channel($color, "blue", rgb);
+}

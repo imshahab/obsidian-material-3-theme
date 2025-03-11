@@ -1,0 +1,9 @@
+@use 'sass:string';
+@use 'pkg:@sass-fairy/url';
+
+@use '../tokens/colors';
+
+@mixin background($color: #000000) {
+  $encoded-color: url.encode("#{$color}");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='24px' viewBox='0 -960 960 960' width='24px' fill='#{$encoded-color}'%3E%3Cpath d='M480-360 280-560h400L480-360Z'/%3E%3C/svg%3E");
+}

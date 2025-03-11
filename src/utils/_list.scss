@@ -1,0 +1,5 @@
+@use 'sass:list';
+
+@function separate-with-spaces($list) {
+  @return list.join((), $list, $separator: space);
+}

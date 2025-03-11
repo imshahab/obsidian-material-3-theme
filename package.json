@@ -2,10 +2,12 @@
 	"name": "obsidian-material-3-theme",
 	"version": "1.4.0",
 	"scripts": {
-		"build": "sass --no-source-map --style=compressed src/main.scss theme.css",
-		"watch": "sass --watch --update --style=expanded src/main.scss theme.css"
+		"build": "sass --load-path=node_modules --pkg-importer=node --no-source-map --style=compressed src/main.scss theme.css",
+		"watch": "sass --load-path=node_modules --pkg-importer=node --watch --update --style=expanded src/main.scss theme.css"
 	},
 	"devDependencies": {
+		"@material/web": "^2.2.0",
+		"@sass-fairy/url": "^1.0.1",
 		"sass": "^1.85.0"
 	}
 }

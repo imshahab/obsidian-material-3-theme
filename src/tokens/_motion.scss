@@ -1,8 +1,18 @@
+@use 'sass:list';
+@use 'sass:map';
+
+@use '@material/web/tokens' as md-tokens;
+
+@mixin define-vars(
+  $md-sys-motion: md-tokens.md-sys-motion-values()
+) {
+  @each $token, $value in $md-sys-motion {
+    @if $value {
+      --md-sys-motion-#{$token}: #{$value};
+    }
+  }
+}
+
 :root {
-  --md-sys-motion-easing-standard: cubic-bezier(0.2, 0, 0, 1);
-  --md-sys-motion-easing-standard-accelerate: cubic-bezier(0.3, 0, 1, 1);
-  --md-sys-motion-easing-standard-decelerate: cubic-bezier(0, 0, 0, 1);
-  --md-sys-motion-easing-emphasized: var(--md-sys-motion-easing-standard);
-  --md-sys-motion-easing-emphasized-accelerate: cubic-bezier(0.3, 0, 0.8, 0.15);
-  --md-sys-motion-easing-emphasized-decelerate: cubic-bezier(0.05, 0.7, 0.1, 1);
+  @include define-vars;
 }

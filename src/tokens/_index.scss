@@ -1,4 +1,4 @@
-@forward 'colors';
-@forward 'shape';
-@forward 'state';
-@forward 'motion';
+@forward 'colors' as colors-*;
+@forward 'shape' as shape-*;
+@forward 'state' as state-*;
+@forward 'motion' as motion-*;

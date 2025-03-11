@@ -1,9 +1,19 @@
-:root {
-  --md-sys-state-hover-state-layer-opacity: 0.08;
-  --md-sys-state-focus-state-layer-opacity: 0.1;
-  --md-sys-state-pressed-state-layer-opacity: 0.1;
-  --md-sys-state-drag-state-layer-opacity: 0.16;
+@use 'sass:list';
+@use 'sass:map';
 
-  --md-sys-state-focus-indicator-thickness: 3px;
-  --md-sys-state-focus-indicator-offset: 2px;
+@use '@material/web/tokens' as md-tokens;
+
+@mixin define-vars(
+  $md-sys-state: md-tokens.md-sys-state-values()
+) {
+  @each $token, $value in $md-sys-state {
+    @if $value {
+      --md-sys-state-#{$token}: #{$value};
+    }
+  }
 }
+
+:root {
+  @include define-vars;
+}
+
