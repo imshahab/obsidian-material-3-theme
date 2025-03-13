@@ -3,11 +3,15 @@
 	"version": "1.5.2",
 	"scripts": {
 		"build": "sass --load-path=node_modules --pkg-importer=node --no-source-map --style=compressed src/main.scss theme.css",
+		"generate-reference-palette": "tsx utils/generateReferencePalette.ts",
 		"watch": "sass --load-path=node_modules --pkg-importer=node --watch --update --style=expanded src/main.scss theme.css"
 	},
 	"devDependencies": {
+		"@material/material-color-utilities": "^0.3.0",
 		"@material/web": "^2.2.0",
 		"@sass-fairy/url": "^1.0.1",
-		"sass": "^1.85.0"
+		"json2scss-map": "^1.5.1",
+		"sass": "^1.85.0",
+		"tsx": "^4.19.3"
 	}
 }
