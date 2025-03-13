@@ -11,8 +11,6 @@
 @use 'utils';
 
 @mixin define-theme-vars($tokens) {
-  $colors: map.get($tokens, 'md-sys-color');
-
   $tokens: map.merge(
     $tokens,
     (
@@ -21,8 +19,15 @@
           $tokens,
           $exclude-custom-properties: true
         ),
+      'md-comp-dialog':
+        md-tokens.md-comp-dialog-values(
+          $tokens,
+          $exclude-custom-properties: true
+        ),
     )
   );
+
+  $colors: map.get($tokens, 'md-sys-color');
 
   @include md-color.theme($colors);
 
@@ -608,22 +613,22 @@ body {
   $shape: map.get($tokens, 'md-sys-shape', 'corner-extra-small-top');
   --tab-radius-active: #{utils.list-separate-with-spaces($shape)};
 
-  &.theme-light {
+  &.theme-dark {
     $tokens: map.merge(
       $tokens,
       (
-        'md-sys-color': tokens.colors-light(),
+        'md-sys-color': tokens.colors-dark(),
       )
     );
 
     @include define-theme-vars($tokens);
   }
 
-  &.theme-dark {
+  &.theme-light {
     $tokens: map.merge(
       $tokens,
       (
-        'md-sys-color': tokens.colors-dark(),
+        'md-sys-color': tokens.colors-light(),
       )
     );
 
