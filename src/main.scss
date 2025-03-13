@@ -77,6 +77,11 @@
     /* Icons */
     --icon-color-focused: #{map.get($colors, 'on-surface-variant')};
 
+    /* Links */
+    --link-unresolved-color: #{map.get($colors, 'error')};
+    --link-unresolved-opacity: 1;
+    --link-unresolved-filter: none;
+
     /* Nav items */
     --nav-item-background-active: #{map.get($colors, 'secondary-container')};
     --nav-item-color-active: #{map.get($colors, 'on-secondary-container')};
