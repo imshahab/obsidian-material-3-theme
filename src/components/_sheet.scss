@@ -40,7 +40,8 @@ $_default: (
     .menu-scroll {
       background-color: $background-color;
       display: block;
-      padding: 8px 0px;
+      padding-block-start: 0;
+      padding-block-end: max(var(--safe-area-inset-bottom), 8px);
     }
 
     .menu-separator {
