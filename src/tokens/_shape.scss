@@ -1,7 +1,6 @@
 @use 'sass:list';
 @use 'sass:map';
-
-@use '@material/web/tokens' as md-tokens;
+@use 'pkg:@material/web/tokens' as md-tokens;
 
 @mixin define-vars(
   $md-sys-shape: md-tokens.md-sys-shape-values($exclude-custom-properties: true)

@@ -29,8 +29,6 @@
 
   $colors: map.get($tokens, 'md-sys-color');
 
-  @include md-color.theme($colors);
-
   & {
     /* Accent color */
     --color-accent: #{map.get($colors, 'primary')};
@@ -565,6 +563,7 @@
     }
   }
 
+  @include components.chip-styles();
   @include components.drawer-styles($tokens);
   @include components.modal-styles($tokens);
   @include components.sheet-styles($tokens);
@@ -622,7 +621,10 @@ body {
     $tokens: map.merge(
       $tokens,
       (
-        'md-sys-color': tokens.colors-dark(),
+        'md-sys-color':
+          tokens.colors-values-dark(
+            $exclude-custom-properties: true,
+          ),
       )
     );
 
@@ -633,7 +635,10 @@ body {
     $tokens: map.merge(
       $tokens,
       (
-        'md-sys-color': tokens.colors-light(),
+        'md-sys-color':
+          tokens.colors-values-light(
+            $exclude-custom-properties: true,
+          ),
       )
     );
 

@@ -1,0 +1,28 @@
+@use 'sass:list';
+@use 'sass:map';
+@use 'pkg:@material/web/tokens' as md-tokens;
+
+@use '../tokens';
+
+@mixin theme($tokens) {
+  $supported-tokens: tokens.$comp-focus-ring-supported-tokens;
+
+  @each $token, $value in $tokens {
+    @if list.index($supported-tokens, $token) == null {
+      @error 'Token `#{$token}` is not a supported token.';
+    }
+
+    @if $value {
+      --md-focus-ring-#{$token}: #{$value};
+    }
+  }
+}
+
+@mixin styles() {
+  $tokens: tokens.comp-focus-ring-values();
+
+  &:focus-visible {
+    outline: map.get($tokens, 'width') solid map.get($tokens, 'color');
+    outline-offset: map.get($tokens, 'outward-offset');
+  }
+}

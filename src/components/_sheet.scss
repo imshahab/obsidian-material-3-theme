@@ -1,11 +1,11 @@
 @use 'sass:map';
-@use '@material/web/tokens' as md-tokens;
+@use 'pkg:@material/web/tokens' as md-tokens;
 
 @use '../tokens';
 @use '../utils';
 
 $_default: (
-  'md-sys-color': tokens.colors-light(),
+  'md-sys-color': tokens.colors-values-light(),
   'md-sys-shape':
     md-tokens.md-sys-shape-values(
       $exclude-custom-properties: true,

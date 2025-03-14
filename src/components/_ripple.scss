@@ -1,0 +1,81 @@
+@use 'sass:list';
+@use 'sass:map';
+@use 'pkg:@material/web/tokens' as md-tokens;
+
+@use '../tokens';
+
+@mixin theme($tokens) {
+  $supported-tokens: tokens.$comp-ripple-supported-tokens;
+
+  @each $token, $value in $tokens {
+    @if list.index($supported-tokens, $token) == null {
+      @error 'Token `#{$token}` is not a supported token.';
+    }
+
+    @if $value {
+      @debug "--md-ripple-#{$token}: #{$value}";
+      --md-ripple-#{$token}: #{$value};
+    }
+  }
+}
+
+@mixin _root($tokens) {
+  position: relative;
+}
+
+@mixin _normal($tokens) {
+  border-radius: map.get($tokens, 'shape');
+  content: '';
+  height: map.get($tokens, 'height');
+  inset: 50%;
+  pointer-events: none;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  width: map.get($tokens, 'width');
+}
+
+@mixin _hover($tokens) {
+  background-color: map.get($tokens, 'hover-color');
+  opacity: map.get($tokens, 'hover-opacity');
+}
+
+@mixin _active($tokens) {
+  background-color: map.get($tokens, 'pressed-color');
+  opacity: map.get($tokens, 'pressed-opacity');
+}
+
+@mixin styles-before() {
+  $tokens: tokens.comp-ripple-values();
+
+  @include _root($tokens);
+
+  &::before {
+    @include _normal($tokens);
+  }
+
+  &:hover::before {
+    @include _hover($tokens);
+  }
+
+  &:active::before {
+    @include _active($tokens);
+  }
+}
+
+@mixin styles-after() {
+  $tokens: tokens.comp-ripple-values();
+
+  @include _root($tokens);
+
+  &::after {
+    @include _normal($tokens);
+  }
+
+  &:hover::after {
+    @include _hover($tokens);
+  }
+
+  &:active::after {
+    @include _active($tokens);
+  }
+}

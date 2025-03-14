@@ -1,0 +1,90 @@
+@use 'sass:map';
+@use 'pkg:@material/web/tokens/md-comp-input-chip';
+
+@use '../icons';
+@use '../tokens';
+@use '../utils';
+@use 'focus-ring';
+@use 'ripple';
+
+@mixin styles() {
+  $tokens: md-comp-input-chip.values(
+    $exclude-custom-properties: true,
+  );
+
+  .multi-select-pill {
+    background-color: transparent;
+    border: map.get($tokens, 'outline-width') solid
+      map.get($tokens, 'outline-color');
+    border-radius: map.get($tokens, 'container-shape');
+    color: map.get($tokens, 'unselected-label-text-color');
+    gap: map.get($tokens, 'icon-label-space');
+    height: map.get($tokens, 'container-height');
+    padding-block: unset;
+    padding-inline: {
+      start: map.get($tokens, 'leading-space');
+      start: 12px; // Workaround for bug material-web#5784
+      end: map.get($tokens, 'with-trailing-icon-trailing-space');
+    }
+
+    &::after {
+      display: none;
+    }
+
+    .multi-select-pill-content {
+      margin: unset;
+    }
+
+    .multi-select-pill-remove-button {
+      $color: map.get($tokens, 'trailing-icon-color');
+      $size: map.get($tokens, 'icon-size');
+
+      $ripple-size: calc(4 / 3 * $size);
+
+      margin: unset;
+
+      svg {
+        height: $size;
+        opacity: 0;
+        width: $size;
+      }
+
+      @include icons.close-background($color, $size);
+
+      @include focus-ring.styles();
+
+      @include ripple.theme(
+        (
+          'height': $ripple-size,
+          'hover-color': map.get($tokens, 'hover-state-layer-color'),
+          'hover-opacity': map.get($tokens, 'hover-state-layer-opacity'),
+          'pressed-color': map.get($tokens, 'pressed-state-layer-color'),
+          'pressed-opacity': map.get($tokens, 'pressed-state-layer-opacity'),
+          'shape': var(--md-sys-shape-corner-full),
+          'width': $ripple-size,
+        )
+      );
+      @include ripple.styles-after();
+    }
+
+    @include focus-ring.theme(
+      (
+        'outward-offset': 0px,
+      )
+    );
+    @include focus-ring.styles();
+
+    @include ripple.theme(
+      (
+        'height': map.get($tokens, 'container-height'),
+        'hover-color': map.get($tokens, 'hover-state-layer-color'),
+        'hover-opacity': map.get($tokens, 'hover-state-layer-opacity'),
+        'pressed-color': map.get($tokens, 'pressed-state-layer-color'),
+        'pressed-opacity': map.get($tokens, 'pressed-state-layer-opacity'),
+        'shape': map.get($tokens, 'container-shape'),
+        'width': map.get($tokens, 'container-width'),
+      )
+    );
+    @include ripple.styles-before();
+  }
+}

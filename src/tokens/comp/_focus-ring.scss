@@ -1,0 +1,39 @@
+@use 'sass:list';
+@use 'sass:map';
+@use 'pkg:@material/web/tokens/md-comp-focus-ring';
+@use 'pkg:@material/web/tokens/md-sys-color';
+@use 'pkg:@material/web/tokens/internal/validate';
+
+@use '../colors';
+
+$_default: ();
+
+$supported-tokens: ('color', 'outward-offset', 'width');
+$unsupported-tokens: (
+  'active-width',
+  'duration',
+  'inward-offset',
+  'shape',
+  'shape-end-end',
+  'shape-end-start',
+  'shape-start-end',
+  'shape-start-start'
+);
+
+@function values($deps: $_default, $exclude-custom-properties: false) {
+  $tokens: md-comp-focus-ring.values($exclude-custom-properties: true);
+
+  $tokens: validate.values(
+    $tokens,
+    $supported-tokens: $supported-tokens,
+    $unsupported-tokens: $unsupported-tokens
+  );
+
+  @if not $exclude-custom-properties {
+    @each $token, $value in $tokens {
+      $tokens: map.set($tokens, $token, var(--md-focus-ring-#{$token}, #{$value}));
+    }
+  }
+
+  @return $tokens;
+}

@@ -1,3 +1,6 @@
+@forward 'comp/focus-ring' as comp-focus-ring-*;
+@forward 'comp/ripple' as comp-ripple-*;
+
 @forward 'colors' as colors-*;
 @forward 'shape' as shape-*;
 @forward 'state' as state-*;

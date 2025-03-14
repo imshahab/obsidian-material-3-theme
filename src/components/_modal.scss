@@ -1,10 +1,14 @@
 @use 'sass:map';
-@use '@material/web/tokens' as md-tokens;
+@use 'pkg:@material/web/tokens' as md-tokens;
 
 @use '../tokens';
 
 $_default: (
-  'md-sys-color': tokens.colors-light(),
+  'md-comp-dialog':
+    md-tokens.md-comp-dialog-values(
+      $exclude-custom-properties: true,
+    ),
+  'md-sys-color': tokens.colors-values-light(),
   'md-sys-shape':
     md-tokens.md-sys-shape-values(
       $exclude-custom-properties: true,
@@ -118,6 +122,11 @@ $_default: (
           }
         }
       }
+    }
+
+    .modal-container .prompt {
+      border-radius: map.get($deps, 'md-comp-dialog', 'container-shape');
+      background-color: map.get($deps, 'md-comp-dialog', 'container-color');
     }
   }
 }

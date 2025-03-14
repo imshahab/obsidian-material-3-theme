@@ -1,0 +1,39 @@
+@use 'sass:list';
+@use 'sass:map';
+@use 'pkg:@material/web/tokens/md-comp-ripple';
+@use 'pkg:@material/web/tokens/md-sys-shape';
+@use 'pkg:@material/web/tokens/internal/validate';
+
+$_default: (
+  'md-sys-shape': md-sys-shape.values(),
+);
+
+$_extra-supported-tokens: ('height', 'shape', 'width');
+
+$supported-tokens: list.join(
+  md-comp-ripple.$supported-tokens,
+  $_extra-supported-tokens
+);
+
+@function values($deps: $_default, $exclude-hardcoded-values: false, $exclude-custom-properties: false) {
+  $tokens: map.merge(
+    md-comp-ripple.values(
+      $exclude-custom-properties: true,
+    ),
+    (
+      'height': if($exclude-hardcoded-values, null, 100%),
+      'shape': map.get($deps, 'md-sys-shape', 'corner-full'),
+      'width': if($exclude-hardcoded-values, null, 100%),
+    )
+  );
+
+  $tokens: validate.values($tokens, $supported-tokens: $supported-tokens);
+
+  @if not $exclude-custom-properties {
+    @each $token, $value in $tokens {
+      $tokens: map.set($tokens, $token, var(--md-ripple-#{$token}, #{$value}));
+    }
+  }
+
+  @return $tokens;
+}
