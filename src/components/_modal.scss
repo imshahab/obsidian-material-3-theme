@@ -104,6 +104,14 @@ $_md-comp-suggestion-chip: md-comp-suggestion-chip.values();
         }
       }
     }
+
+    .modal-container .prompt {
+      // TODO: Replace hardcoded values
+      border-end-end-radius: 0px;
+      border-end-start-radius: 0px;
+      border-start-end-radius: map.get($_md-comp-dialog, 'container-shape-start-end');
+      border-start-start-radius: map.get($_md-comp-dialog, 'container-shape-start-start');
+    }
   }
 
   &:not(.is-phone) {
@@ -119,144 +127,144 @@ $_md-comp-suggestion-chip: md-comp-suggestion-chip.values();
         }
       }
     }
+  }
 
-    .modal-container .prompt {
-      background-color: var(--md-sys-color-surface);
-      border-radius: map.get($_md-comp-dialog, 'container-shape');
+  .modal-container .prompt {
+    background-color: var(--md-sys-color-surface);
+    border-radius: map.get($_md-comp-dialog, 'container-shape');
 
-      .prompt-input-container {
-        align-items: center;
-        background-color: var(--md-sys-color-surface-container-high);
-        border-radius: var(--md-sys-shape-corner-full);
-        gap: 16px;
-        margin-block: 8px;
-        margin-inline: 16px;
-        min-height: 56px;
-        padding-inline: 16px;
+    .prompt-input-container {
+      align-items: center;
+      background-color: var(--md-sys-color-surface-container-high);
+      border-radius: var(--md-sys-shape-corner-full);
+      gap: 16px;
+      margin-block: 8px;
+      margin-inline: 16px;
+      min-height: 56px;
+      padding-inline: 16px;
 
-        &::before {
-          content: '';
-          height: 24px;
-          width: 24px;
+      &::before {
+        content: '';
+        height: 24px;
+        width: 24px;
 
-          @include icons.search-background(
-            map.get($_md-comp-search-bar, 'leading-icon-color')
+        @include icons.search-background(
+          map.get($_md-comp-search-bar, 'leading-icon-color')
+        );
+      }
+
+      .prompt-input {
+        background-color: transparent;
+        border: unset;
+        color: map.get($_md-comp-search-bar, 'input-text-color');
+        font-family: map.get($_md-comp-search-bar, 'input-text-font');
+        font-size: map.get($_md-comp-search-bar, 'input-text-size');
+        font-weight: map.get($_md-comp-search-bar, 'input-text-weight');
+        line-height: map.get($_md-comp-search-bar, 'input-text-line-height');
+        padding: unset;
+
+        &::placeholder {
+          color: map.get($_md-comp-search-bar, 'supporting-text-color');
+          font-family: map.get($_md-comp-search-bar, 'supporting-text-font');
+          font-size: map.get($_md-comp-search-bar, 'supporting-text-size');
+          font-weight: map.get(
+            $_md-comp-search-bar,
+            'supporting-text-weight'
           );
-        }
-
-        .prompt-input {
-          background-color: transparent;
-          border: unset;
-          color: map.get($_md-comp-search-bar, 'input-text-color');
-          font-family: map.get($_md-comp-search-bar, 'input-text-font');
-          font-size: map.get($_md-comp-search-bar, 'input-text-size');
-          font-weight: map.get($_md-comp-search-bar, 'input-text-weight');
-          line-height: map.get($_md-comp-search-bar, 'input-text-line-height');
-          padding: unset;
-
-          &::placeholder {
-            color: map.get($_md-comp-search-bar, 'supporting-text-color');
-            font-family: map.get($_md-comp-search-bar, 'supporting-text-font');
-            font-size: map.get($_md-comp-search-bar, 'supporting-text-size');
-            font-weight: map.get(
-              $_md-comp-search-bar,
-              'supporting-text-weight'
-            );
-            line-height: map.get(
-              $_md-comp-search-bar,
-              'supporting-text-line-height'
-            );
-          }
-        }
-
-        .search-input-clear-button {
-          position: unset;
+          line-height: map.get(
+            $_md-comp-search-bar,
+            'supporting-text-line-height'
+          );
         }
       }
 
-      .prompt-results {
-        background-color: map.get($_md-comp-list, 'container-color');
-        padding: unset;
+      .search-input-clear-button {
+        position: unset;
+      }
+    }
 
-        .suggestion-item {
-          $shape: var(--md-sys-shape-corner-none);
+    .prompt-results {
+      background-color: map.get($_md-comp-list, 'container-color');
+      padding: unset;
 
-          align-items: center;
-          background-color: transparent;
-          border-radius: $shape;
-          color: map.get($_md-comp-list-item, 'label-text-color');
-          font-family: map.get($_md-comp-list-item, 'label-text-font');
-          font-size: map.get($_md-comp-list-item, 'label-text-size');
-          font-weight: map.get($_md-comp-list-item, 'label-text-weight');
-          height: map.get($_md-comp-list-item, 'one-line-container-height');
-          line-height: map.get($_md-comp-list-item, 'label-text-line-height');
-          padding-inline: {
-            start: map.get($_md-comp-list-item, 'leading-space');
-            end: map.get($_md-comp-list-item, 'trailing-space');
-          }
+      .suggestion-item {
+        $shape: var(--md-sys-shape-corner-none);
 
-          &.is-selected:not(:active) {
-            $color: map.get($_md-comp-list-item, 'hover-state-layer-color');
-            $opacity: map.get($_md-comp-list-item, 'hover-state-layer-opacity');
-            background-color: rgb(from $color r g b / $opacity);
-          }
+        align-items: center;
+        background-color: transparent;
+        border-radius: $shape;
+        color: map.get($_md-comp-list-item, 'label-text-color');
+        font-family: map.get($_md-comp-list-item, 'label-text-font');
+        font-size: map.get($_md-comp-list-item, 'label-text-size');
+        font-weight: map.get($_md-comp-list-item, 'label-text-weight');
+        height: map.get($_md-comp-list-item, 'one-line-container-height');
+        line-height: map.get($_md-comp-list-item, 'label-text-line-height');
+        padding-inline: {
+          start: map.get($_md-comp-list-item, 'leading-space');
+          end: map.get($_md-comp-list-item, 'trailing-space');
+        }
 
-          @include ripple.theme(
-            (
-              'hover-color':
-                map.get($_md-comp-list-item, 'hover-state-layer-color'),
-              // Using .is-selected instead
-              'hover-opacity': 0,
-              'pressed-color':
-                map.get($_md-comp-list-item, 'pressed-state-layer-color'),
-              'pressed-opacity':
-                map.get($_md-comp-list-item, 'pressed-state-layer-opacity'),
-              'shape': $shape,
-            )
-          );
-          @include ripple.styles-after();
+        &.is-selected:not(:active) {
+          $color: map.get($_md-comp-list-item, 'hover-state-layer-color');
+          $opacity: map.get($_md-comp-list-item, 'hover-state-layer-opacity');
+          background-color: rgb(from $color r g b / $opacity);
+        }
 
-          .suggestion-aux:has(.suggestion-hotkey) {
-            gap: 8px;
+        @include ripple.theme(
+          (
+            'hover-color':
+              map.get($_md-comp-list-item, 'hover-state-layer-color'),
+            // Using .is-selected instead
+            'hover-opacity': 0,
+            'pressed-color':
+              map.get($_md-comp-list-item, 'pressed-state-layer-color'),
+            'pressed-opacity':
+              map.get($_md-comp-list-item, 'pressed-state-layer-opacity'),
+            'shape': $shape,
+          )
+        );
+        @include ripple.styles-after();
 
-            kbd {
-              align-content: center;
-              background-color: transparent;
-              border: map.get($_md-comp-suggestion-chip, 'outline-width') solid
-                map.get($_md-comp-suggestion-chip, 'outline-color');
-              border-radius: map.get(
-                $_md-comp-suggestion-chip,
-                'container-shape'
-              );
-              color: map.get($_md-comp-suggestion-chip, 'label-text-color');
-              font-family: map.get(
-                $_md-comp-suggestion-chip,
-                'label-text-font'
-              );
-              font-size: map.get($_md-comp-suggestion-chip, 'label-text-size');
-              font-weight: map.get(
-                $_md-comp-suggestion-chip,
-                'label-text-weight'
-              );
-              height: map.get($_md-comp-suggestion-chip, 'container-height');
-              line-height: map.get(
-                $_md-comp-suggestion-chip,
-                'label-text-line-height'
-              );
-              margin: unset;
-              padding-block: unset;
-              padding-inline: {
-                start: map.get($_md-comp-suggestion-chip, 'leading-space');
-                end: map.get($_md-comp-suggestion-chip, 'trailing-space');
-              }
+        .suggestion-aux:has(.suggestion-hotkey) {
+          gap: 8px;
+
+          kbd {
+            align-content: center;
+            background-color: transparent;
+            border: map.get($_md-comp-suggestion-chip, 'outline-width') solid
+              map.get($_md-comp-suggestion-chip, 'outline-color');
+            border-radius: map.get(
+              $_md-comp-suggestion-chip,
+              'container-shape'
+            );
+            color: map.get($_md-comp-suggestion-chip, 'label-text-color');
+            font-family: map.get(
+              $_md-comp-suggestion-chip,
+              'label-text-font'
+            );
+            font-size: map.get($_md-comp-suggestion-chip, 'label-text-size');
+            font-weight: map.get(
+              $_md-comp-suggestion-chip,
+              'label-text-weight'
+            );
+            height: map.get($_md-comp-suggestion-chip, 'container-height');
+            line-height: map.get(
+              $_md-comp-suggestion-chip,
+              'label-text-line-height'
+            );
+            margin: unset;
+            padding-block: unset;
+            padding-inline: {
+              start: map.get($_md-comp-suggestion-chip, 'leading-space');
+              end: map.get($_md-comp-suggestion-chip, 'trailing-space');
             }
           }
         }
       }
+    }
 
-      .prompt-instructions {
-        background-color: var(--md-sys-color-surface-container);
-      }
+    .prompt-instructions {
+      background-color: var(--md-sys-color-surface-container);
     }
   }
 }
