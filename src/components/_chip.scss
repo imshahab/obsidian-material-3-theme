@@ -49,7 +49,7 @@
         width: $size;
       }
 
-      @include icons.close-background($color, $size);
+      @include icons.close-background($color, $size: $size);
 
       @include focus-ring.styles();
 

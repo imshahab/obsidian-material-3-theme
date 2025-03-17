@@ -3,8 +3,10 @@
 
 @use '../tokens/colors';
 
-@mixin background($color: #000000) {
+@mixin background($color, $position: center, $size: 24px) {
   $encoded-color: url.encode("#{$color}");
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='24px' viewBox='0 -960 960 960' width='24px' fill='#{$encoded-color}'%3E%3Cpath d='M480-360 280-560h400L480-360Z'/%3E%3C/svg%3E");
-  background-size: 24px 24px;
+  background-position: $position;
+  background-repeat: no-repeat;
+  background-size: $size $size;
 }

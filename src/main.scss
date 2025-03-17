@@ -305,7 +305,7 @@
       outline: 1px solid map.get($colors, 'outline');
       padding: 0 42px 0 24px;
 
-      @include icons.dropdown-background($color);
+      @include icons.dropdown-background($color, $position: null);
     }
 
     .clickable-icon:hover {
