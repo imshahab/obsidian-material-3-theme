@@ -13,7 +13,6 @@
     }
 
     @if $value {
-      @debug "--md-ripple-#{$token}: #{$value}";
       --md-ripple-#{$token}: #{$value};
     }
   }
