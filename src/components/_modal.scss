@@ -131,6 +131,7 @@ $_md-comp-suggestion-chip: md-comp-suggestion-chip.values();
 
   .modal-container .prompt {
     background-color: var(--md-sys-color-surface);
+    border: unset;
     border-radius: map.get($_md-comp-dialog, 'container-shape');
 
     .prompt-input-container {
