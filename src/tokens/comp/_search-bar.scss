@@ -1,0 +1,79 @@
+@use 'sass:list';
+@use 'sass:map';
+// WARNING: Using internal MWC tokens directly as it's the only way to access them.
+// This WILL break whenever tokens are updated.
+@use 'pkg:@material/web/tokens/v0_192/md-comp-search-bar';
+@use 'pkg:@material/web/tokens/md-sys-elevation';
+@use 'pkg:@material/web/tokens/md-sys-shape';
+@use 'pkg:@material/web/tokens/md-sys-state';
+@use 'pkg:@material/web/tokens/md-sys-typescale';
+@use 'pkg:@material/web/tokens/internal/validate';
+
+@use '../colors';
+
+$_default: (
+  'md-sys-color': colors.values-light(),
+  'md-sys-elevation': md-sys-elevation.values(),
+  'md-sys-shape': md-sys-shape.values(),
+  'md-sys-state': md-sys-state.values(),
+  'md-sys-typescale': md-sys-typescale.values(),
+);
+
+$supported-tokens: (
+  'avatar-shape',
+  'avatar-size',
+  'container-color',
+  'container-height',
+  'container-shape',
+  'hover-state-layer-color',
+  'hover-state-layer-opacity',
+  'hover-supporting-text-color',
+  'input-text-color',
+  'input-text-font',
+  'input-text-line-height',
+  'input-text-size',
+  'input-text-weight',
+  'leading-icon-color',
+  'pressed-state-layer-color',
+  'pressed-state-layer-opacity',
+  'pressed-supporting-text-color',
+  'supporting-text-color',
+  'supporting-text-font',
+  'supporting-text-line-height',
+  'supporting-text-size',
+  'supporting-text-weight',
+  'trailing-icon-color'
+);
+$unsupported-tokens: (
+  'container-elevation',
+  'input-text-tracking',
+  'input-text-type',
+  'supporting-text-tracking',
+  'supporting-text-type'
+);
+
+@function values(
+  $deps: $_default,
+  $exclude-hardcoded-values: false,
+  $exclude-custom-properties: false
+) {
+  $tokens: md-comp-search-bar.values($deps, $exclude-hardcoded-values);
+
+  $tokens: validate.values(
+    $tokens,
+    $supported-tokens: $supported-tokens,
+    $unsupported-tokens: $unsupported-tokens
+  );
+
+  @if not $exclude-custom-properties {
+    @each $token, $value in $tokens {
+      $tokens: map.set(
+        $tokens,
+        $token,
+        var(--md-search-bar-#{$token}, #{$value})
+      );
+    }
+  }
+
+  @return $tokens;
+}

@@ -1,21 +1,21 @@
 @use 'sass:map';
-@use 'pkg:@material/web/tokens' as md-tokens;
+@use 'pkg:@material/web/tokens/md-comp-dialog';
+@use 'pkg:@material/web/tokens/md-comp-list';
+@use 'pkg:@material/web/tokens/md-comp-list-item';
+@use 'pkg:@material/web/tokens/md-comp-suggestion-chip';
 
+@use '../icons';
 @use '../tokens';
+@use 'focus-ring';
+@use 'ripple';
 
-$_default: (
-  'md-comp-dialog':
-    md-tokens.md-comp-dialog-values(
-      $exclude-custom-properties: true,
-    ),
-  'md-sys-color': tokens.colors-values-light(),
-  'md-sys-shape':
-    md-tokens.md-sys-shape-values(
-      $exclude-custom-properties: true,
-    ),
-);
+$_md-comp-dialog: md-comp-dialog.values();
+$_md-comp-list: md-comp-list.values();
+$_md-comp-list-item: md-comp-list-item.values();
+$_md-comp-search-bar: tokens.comp-search-bar-values();
+$_md-comp-suggestion-chip: md-comp-suggestion-chip.values();
 
-@mixin styles($deps: $_default) {
+@mixin styles() {
   &.is-phone {
     .modal.mod-settings {
       .modal-close-button {
@@ -39,7 +39,7 @@ $_default: (
       }
 
       .modal-header {
-        background-color: map.get($deps, 'md-sys-color', 'surface-container');
+        background-color: var(--md-sys-color-surface-container);
         border: unset;
         height: calc(var(--safe-area-inset-top) + 64px);
         padding-block: var(--safe-area-inset-top) 0;
@@ -110,23 +110,153 @@ $_default: (
     .modal.mod-settings {
       .modal-content {
         .vertical-tab-nav-item {
-          border-radius: map.get($deps, 'md-sys-shape', 'corner-full');
+          border-radius: var(--md-sys-shape-corner-full);
 
           &.is-active {
-            background-color: map.get(
-              $deps,
-              'md-sys-color',
-              'secondary-container'
-            );
-            color: map.get($deps, 'md-sys-color', 'on-secondary-container');
+            background-color: var(--md-sys-color-secondary-container);
+            color: var(--md-sys-color-on-secondary-container);
           }
         }
       }
     }
 
     .modal-container .prompt {
-      border-radius: map.get($deps, 'md-comp-dialog', 'container-shape');
-      background-color: map.get($deps, 'md-comp-dialog', 'container-color');
+      background-color: var(--md-sys-color-surface);
+      border-radius: map.get($_md-comp-dialog, 'container-shape');
+
+      .prompt-input-container {
+        align-items: center;
+        background-color: var(--md-sys-color-surface-container-high);
+        border-radius: var(--md-sys-shape-corner-full);
+        gap: 16px;
+        margin-block: 8px;
+        margin-inline: 16px;
+        min-height: 56px;
+        padding-inline: 16px;
+
+        &::before {
+          content: '';
+          height: 24px;
+          width: 24px;
+
+          @include icons.search-background(
+            map.get($_md-comp-search-bar, 'leading-icon-color')
+          );
+        }
+
+        .prompt-input {
+          background-color: transparent;
+          border: unset;
+          color: map.get($_md-comp-search-bar, 'input-text-color');
+          font-family: map.get($_md-comp-search-bar, 'input-text-font');
+          font-size: map.get($_md-comp-search-bar, 'input-text-size');
+          font-weight: map.get($_md-comp-search-bar, 'input-text-weight');
+          line-height: map.get($_md-comp-search-bar, 'input-text-line-height');
+          padding: unset;
+
+          &::placeholder {
+            color: map.get($_md-comp-search-bar, 'supporting-text-color');
+            font-family: map.get($_md-comp-search-bar, 'supporting-text-font');
+            font-size: map.get($_md-comp-search-bar, 'supporting-text-size');
+            font-weight: map.get(
+              $_md-comp-search-bar,
+              'supporting-text-weight'
+            );
+            line-height: map.get(
+              $_md-comp-search-bar,
+              'supporting-text-line-height'
+            );
+          }
+        }
+
+        .search-input-clear-button {
+          position: unset;
+        }
+      }
+
+      .prompt-results {
+        background-color: map.get($_md-comp-list, 'container-color');
+        padding: unset;
+
+        .suggestion-item {
+          $shape: var(--md-sys-shape-corner-none);
+
+          align-items: center;
+          background-color: transparent;
+          border-radius: $shape;
+          color: map.get($_md-comp-list-item, 'label-text-color');
+          font-family: map.get($_md-comp-list-item, 'label-text-font');
+          font-size: map.get($_md-comp-list-item, 'label-text-size');
+          font-weight: map.get($_md-comp-list-item, 'label-text-weight');
+          height: map.get($_md-comp-list-item, 'one-line-container-height');
+          line-height: map.get($_md-comp-list-item, 'label-text-line-height');
+          padding-inline: {
+            start: map.get($_md-comp-list-item, 'leading-space');
+            end: map.get($_md-comp-list-item, 'trailing-space');
+          }
+
+          &.is-selected:not(:active) {
+            $color: map.get($_md-comp-list-item, 'hover-state-layer-color');
+            $opacity: map.get($_md-comp-list-item, 'hover-state-layer-opacity');
+            background-color: rgb(from $color r g b / $opacity);
+          }
+
+          @include ripple.theme(
+            (
+              'hover-color':
+                map.get($_md-comp-list-item, 'hover-state-layer-color'),
+              // Using .is-selected instead
+              'hover-opacity': 0,
+              'pressed-color':
+                map.get($_md-comp-list-item, 'pressed-state-layer-color'),
+              'pressed-opacity':
+                map.get($_md-comp-list-item, 'pressed-state-layer-opacity'),
+              'shape': $shape,
+            )
+          );
+          @include ripple.styles-after();
+
+          .suggestion-aux:has(.suggestion-hotkey) {
+            gap: 8px;
+
+            kbd {
+              align-content: center;
+              background-color: transparent;
+              border: map.get($_md-comp-suggestion-chip, 'outline-width') solid
+                map.get($_md-comp-suggestion-chip, 'outline-color');
+              border-radius: map.get(
+                $_md-comp-suggestion-chip,
+                'container-shape'
+              );
+              color: map.get($_md-comp-suggestion-chip, 'label-text-color');
+              font-family: map.get(
+                $_md-comp-suggestion-chip,
+                'label-text-font'
+              );
+              font-size: map.get($_md-comp-suggestion-chip, 'label-text-size');
+              font-weight: map.get(
+                $_md-comp-suggestion-chip,
+                'label-text-weight'
+              );
+              height: map.get($_md-comp-suggestion-chip, 'container-height');
+              line-height: map.get(
+                $_md-comp-suggestion-chip,
+                'label-text-line-height'
+              );
+              margin: unset;
+              padding-block: unset;
+              padding-inline: {
+                start: map.get($_md-comp-suggestion-chip, 'leading-space');
+                end: map.get($_md-comp-suggestion-chip, 'trailing-space');
+              }
+            }
+          }
+        }
+      }
+
+      .prompt-instructions {
+        background-color: var(--md-sys-color-surface-container);
+      }
     }
   }
 }
