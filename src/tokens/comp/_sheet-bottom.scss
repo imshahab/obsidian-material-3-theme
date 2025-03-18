@@ -1,0 +1,70 @@
+@use 'sass:list';
+@use 'sass:map';
+// WARNING: Using internal MWC tokens directly as it's the only way to access them.
+// This WILL break whenever tokens are updated.
+@use 'pkg:@material/web/tokens/v0_192/md-comp-sheet-bottom';
+@use 'pkg:@material/web/tokens/md-sys-elevation';
+@use 'pkg:@material/web/tokens/md-sys-shape';
+@use 'pkg:@material/web/tokens/internal/shape';
+@use 'pkg:@material/web/tokens/internal/validate';
+
+@use '../colors';
+
+$_default: (
+  'md-sys-color': colors.values-light(),
+  'md-sys-elevation': md-sys-elevation.values(),
+  'md-sys-shape': md-sys-shape.values(),
+);
+
+$supported-tokens: (
+  'docked-container-color',
+  'docked-container-shape',
+  'docked-container-shape-end-end',
+  'docked-container-shape-end-start',
+  'docked-container-shape-start-end',
+  'docked-container-shape-start-start',
+  'docked-drag-handle-color',
+  'docked-drag-handle-height',
+  'docked-drag-handle-width',
+  'docked-minimized-container-shape',
+  'docked-minimized-container-shape-end-end',
+  'docked-minimized-container-shape-end-start',
+  'docked-minimized-container-shape-start-end',
+  'docked-minimized-container-shape-start-start'
+);
+$unsupported-tokens: (
+  'docked-modal-container-elevation',
+  'docked-standard-container-elevation'
+);
+
+@function values(
+  $deps: $_default,
+  $exclude-hardcoded-values: false,
+  $exclude-custom-properties: false
+) {
+  $tokens: md-comp-sheet-bottom.values($deps, $exclude-hardcoded-values);
+  $new-tokens: shape.get-new-logical-shape-tokens(
+    $tokens,
+    'docked-container-shape',
+    'docked-minimized-container-shape'
+  );
+
+  $tokens: validate.values(
+    $tokens,
+    $supported-tokens: $supported-tokens,
+    $unsupported-tokens: $unsupported-tokens,
+    $new-tokens: $new-tokens
+  );
+
+  @if not $exclude-custom-properties {
+    @each $token, $value in $tokens {
+      $tokens: map.set(
+        $tokens,
+        $token,
+        var(--md-sheet-bottom-#{$token}, #{$value})
+      );
+    }
+  }
+
+  @return $tokens;
+}
