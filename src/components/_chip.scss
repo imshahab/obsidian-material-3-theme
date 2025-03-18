@@ -67,11 +67,6 @@
       @include ripple.styles-after();
     }
 
-    @include focus-ring.theme(
-      (
-        'outward-offset': 0px,
-      )
-    );
     @include focus-ring.styles();
 
     @include ripple.theme(
