@@ -570,7 +570,7 @@
   @include components.chip-styles();
   @include components.drawer-styles($tokens);
   @include components.modal-styles();
-  @include components.sheet-styles($tokens);
+  @include components.sheet-styles();
 }
 
 body {

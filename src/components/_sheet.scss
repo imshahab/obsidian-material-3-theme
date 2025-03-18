@@ -1,40 +1,64 @@
 @use 'sass:map';
-@use 'pkg:@material/web/tokens' as md-tokens;
+@use 'pkg:@material/web/tokens/md-comp-divider';
+@use 'pkg:@material/web/tokens/md-comp-filled-card';
+@use 'pkg:@material/web/tokens/md-comp-icon';
+@use 'pkg:@material/web/tokens/md-comp-list';
+@use 'pkg:@material/web/tokens/md-comp-list-item';
+@use 'pkg:@material/web/tokens/md-sys-typescale';
 
 @use '../tokens';
 @use '../utils';
 
-$_default: (
-  'md-sys-color': tokens.colors-values-light(),
-  'md-sys-shape':
-    md-tokens.md-sys-shape-values(
-      $exclude-custom-properties: true,
-    ),
-  'md-sys-typescale':
-    md-tokens.md-sys-typescale-values(
-      $exclude-custom-properties: true,
-    ),
-);
+$_md-comp-divider: md-comp-divider.values();
+$_md-comp-filled-card: md-comp-filled-card.values();
+$_md-comp-icon: md-comp-icon.values();
+$_md-comp-list: md-comp-list.values();
+$_md-comp-list-item: md-comp-list-item.values();
+$_md-comp-sheet-bottom: tokens.comp-sheet-bottom-values();
+$_md-sys-typescale: md-sys-typescale.values();
 
-@mixin styles($deps: $_default) {
+@mixin styles() {
   &.is-phone {
-    $background-color: map.get($deps, 'md-sys-color', 'surface-container-low');
+    $background-color: map.get(
+      $_md-comp-sheet-bottom,
+      'docked-container-color'
+    );
 
     .menu {
-      $shape: map.get($deps, 'md-sys-shape', 'corner-extra-large-top');
-      @include utils.shape-define-border-radius($shape);
-
       background-color: $background-color;
+      border-end-end-radius: map.get(
+        $_md-comp-sheet-bottom,
+        'docked-container-shape-end-end'
+      );
+      border-end-start-radius: map.get(
+        $_md-comp-sheet-bottom,
+        'docked-container-shape-end-start'
+      );
+      border-start-end-radius: map.get(
+        $_md-comp-sheet-bottom,
+        'docked-container-shape-start-end'
+      );
+      border-start-start-radius: map.get(
+        $_md-comp-sheet-bottom,
+        'docked-container-shape-start-start'
+      );
       margin-top: 72px;
       padding: 0;
     }
 
     .menu-grabber {
-      background-color: map.get($deps, 'md-sys-color', 'on-surface-variant');
-      border-radius: map.get($deps, 'md-sys-shape', 'corner-full');
-      height: 4px;
-      width: 32px;
+      color: map.get($_md-comp-sheet-bottom, 'docked-drag-handle-color');
+      height: map.get($_md-comp-sheet-bottom, 'docked-drag-handle-height');
       margin: 22px auto;
+      width: map.get($_md-comp-sheet-bottom, 'docked-drag-handle-width');
+
+      &::before {
+        background: currentColor;
+        border-radius: var(--md-sys-shape-corner-full);
+        content: '';
+        height: 100%;
+        width: 100%;
+      }
     }
 
     .menu-scroll {
@@ -45,33 +69,72 @@ $_default: (
     }
 
     .menu-separator {
-      margin: 8px 16px;
-      height: 1px;
+      border: unset;
+      color: map.get($_md-comp-divider, 'color');
+      display: flex;
+      height: map.get($_md-comp-divider, 'thickness');
+      margin-block: 8px;
+      padding-inline: 16px;
 
-      &:nth-of-type(2) {
+      &:nth-of-type(2),
+      & + .menu-separator {
         display: none;
+      }
+
+      &::before {
+        background: currentColor;
+        content: '';
+        height: 100%;
+        width: 100%;
       }
     }
 
     .menu-item {
-      border-radius: map.get($deps, 'md-sys-shape', 'corner-none');
+      border-radius: var(--md-sys-shape-corner-none);
 
       &.is-label {
-        border-radius: map.get($deps, 'md-sys-shape', 'corner-medium');
-        background-color: map.get(
-          $deps,
-          'md-sys-color',
-          'surface-container-highest'
-        );
-        margin-inline: 16px;
-        margin-bottom: 8px;
+        padding-block: 0 8px;
         padding-inline: 16px;
+
+        .menu-item-title {
+          background-color: map.get($_md-comp-filled-card, 'container-color');
+          border-radius: map.get($_md-comp-filled-card, 'container-shape');
+          display: flex;
+          flex-direction: column;
+          font-family: map.get($_md-sys-typescale, 'title-large-font');
+          font-size: map.get($_md-sys-typescale, 'title-large-size');
+          font-weight: map.get($_md-sys-typescale, 'title-large-weight');
+          gap: 8px;
+          line-height: map.get($_md-sys-typescale, 'title-large-line-height');
+          padding: 16px;
+
+          div:first-child {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+          }
+
+          .menu-item-desc {
+            font-family: map.get($_md-sys-typescale, 'body-large-font');
+            font-size: map.get($_md-sys-typescale, 'body-large-size');
+            font-weight: map.get($_md-sys-typescale, 'body-large-weight');
+            line-height: map.get($_md-sys-typescale, 'body-large-line-height');
+            padding: unset;
+          }
+        }
       }
 
       &.tappable {
-        gap: 16px;
-        height: 56px;
-        padding-inline: 32px;
+        gap: 16px; // No gap token in MWC
+        height: map.get($_md-comp-list-item, 'one-line-container-height');
+        padding-block: {
+          start: map.get($_md-comp-list-item, 'top-space');
+          end: map.get($_md-comp-list-item, 'bottom-space');
+        }
+        padding-inline: {
+          start: map.get($_md-comp-list-item, 'leading-space');
+          end: map.get($_md-comp-list-item, 'trailing-space');
+        }
       }
     }
 
@@ -80,17 +143,18 @@ $_default: (
       justify-content: center;
 
       .svg-icon {
-        color: map.get($deps, 'md-sys-color', 'on-surface-variant');
-        height: 24px;
-        width: 24px;
+        color: map.get($_md-comp-list-item, 'leading-icon-color');
+        height: map.get($_md-comp-icon, 'size');
+        width: map.get($_md-comp-icon, 'size');
       }
     }
 
     .menu-item-title {
-      color: map.get($deps, 'md-sys-color', 'on-surface-variant');
-      font-size: map.get($deps, 'md-sys-typescale', 'body-large-size');
-      line-height: map.get($deps, 'md-sys-typescale', 'body-large-line-height');
-      letter-spacing: map.get($deps, 'md-sys-typescale', 'body-large-tracking');
+      color: map.get($_md-comp-list-item, 'label-text-color');
+      font-family: map.get($_md-comp-list-item, 'label-text-font');
+      font-size: map.get($_md-comp-list-item, 'label-text-size');
+      font-weight: map.get($_md-comp-list-item, 'label-text-weight');
+      line-height: map.get($_md-comp-list-item, 'label-text-line-height');
     }
   }
 }
