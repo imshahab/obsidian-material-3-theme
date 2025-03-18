@@ -475,6 +475,10 @@
       border: unset;
       border-radius: unset;
       color: map.get($colors, 'on-surface');
+
+      &:not(:placeholder-shown) {
+        padding: unset;
+      }
     }
 
     .search-input-container input::placeholder {
