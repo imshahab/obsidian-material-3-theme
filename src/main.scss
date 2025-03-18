@@ -568,7 +568,7 @@
   }
 
   @include components.chip-styles();
-  @include components.drawer-styles($tokens);
+  @include components.drawer-styles();
   @include components.modal-styles();
   @include components.sheet-styles();
 }
