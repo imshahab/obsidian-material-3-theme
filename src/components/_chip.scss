@@ -1,5 +1,9 @@
 @use 'sass:map';
 @use 'pkg:@material/web/tokens/md-comp-input-chip';
+@use 'pkg:@material/web/tokens/md-sys-elevation';
+@use 'pkg:@material/web/tokens/md-sys-shape';
+@use 'pkg:@material/web/tokens/md-sys-state';
+@use 'pkg:@material/web/tokens/md-sys-typescale';
 
 @use '../icons';
 @use '../tokens';
@@ -7,10 +11,21 @@
 @use 'focus-ring';
 @use 'ripple';
 
-@mixin styles() {
-  $tokens: md-comp-input-chip.values(
-    $exclude-custom-properties: true,
+$_input-chip-deps: (
+  'md-sys-elevation': md-sys-elevation.values(),
+  'md-sys-shape': md-sys-shape.values(),
+  'md-sys-state': md-sys-state.values(),
+  'md-sys-typescale': md-sys-typescale.values(),
+);
+
+@mixin styles($md-sys-color) {
+  $deps: map.merge(
+    $_input-chip-deps,
+    (
+      'md-sys-color': $md-sys-color,
+    )
   );
+  $tokens: md-comp-input-chip.values($deps, $exclude-custom-properties: true);
 
   .multi-select-pill {
     background-color: transparent;

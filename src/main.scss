@@ -567,9 +567,9 @@
     }
   }
 
-  @include components.chip-styles();
-  @include components.drawer-styles();
-  @include components.modal-styles();
+  @include components.chip-styles($colors);
+  @include components.drawer-styles($colors);
+  @include components.modal-styles($colors);
   @include components.sheet-styles();
 }
 

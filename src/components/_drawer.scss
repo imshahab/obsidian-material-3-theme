@@ -2,18 +2,41 @@
 @use 'pkg:@material/web/tokens/md-comp-navigation-drawer';
 @use 'pkg:@material/web/tokens/md-comp-outlined-button';
 @use 'pkg:@material/web/tokens/md-sys-shape';
+@use 'pkg:@material/web/tokens/md-sys-state';
+@use 'pkg:@material/web/tokens/md-sys-typescale';
 
+@use '../icons';
 @use '../tokens';
 @use '../utils';
 
-$_md-comp-outlined-button: md-comp-outlined-button.values();
+$_outlined-button-deps: (
+  'md-sys-shape': md-sys-shape.values(),
+  'md-sys-state': md-sys-state.values(),
+  'md-sys-typescale': md-sys-typescale.values(),
+);
 $_md-sys-shape: md-sys-shape.values();
 
-@mixin styles() {
-  $tokens: md-comp-navigation-drawer.values();
+@mixin styles($md-sys-color) {
+  $button-deps: map.merge(
+    $_outlined-button-deps,
+    (
+      'md-sys-color': $md-sys-color,
+    )
+  );
+  $md-comp-outlined-button: md-comp-outlined-button.values(
+    $button-deps,
+    $exclude-custom-properties: true
+  );
+
+  $md-comp-navigation-drawer: md-comp-navigation-drawer.values(
+    $exclude-custom-properties: true,
+  );
 
   &.is-mobile {
-    $background-color: map.get($tokens, 'modal-container-color');
+    $background-color: map.get(
+      $md-comp-navigation-drawer,
+      'modal-container-color'
+    );
 
     .workspace-drawer {
       // TODO: Set border-radius using comp tokens
@@ -28,7 +51,7 @@ $_md-sys-shape: md-sys-shape.values();
     }
 
     .workspace-drawer-header .clickable-icon {
-      color: map.get($tokens, 'inactive-icon-color');
+      color: map.get($md-comp-navigation-drawer, 'inactive-icon-color');
       height: 48px;
       padding: unset;
       width: 48px;
@@ -49,7 +72,7 @@ $_md-sys-shape: md-sys-shape.values();
         padding-inline: 16px;
 
         .clickable-icon {
-          color: map.get($tokens, 'inactive-icon-color');
+          color: map.get($md-comp-navigation-drawer, 'inactive-icon-color');
           height: 48px;
           padding: unset;
           max-width: 48px;
@@ -59,40 +82,47 @@ $_md-sys-shape: md-sys-shape.values();
 
     .workspace-drawer-active-tab-header {
       background-color: transparent;
-      border: map.get($_md-comp-outlined-button, 'outline-width') solid
-        map.get($_md-comp-outlined-button, 'outline-color');
-      border-radius: map.get($_md-comp-outlined-button, 'container-shape');
+      border: map.get($md-comp-outlined-button, 'outline-width') solid
+        map.get($md-comp-outlined-button, 'outline-color');
+      border-radius: map.get($md-comp-outlined-button, 'container-shape');
       color: var(--md-sys-color-primary);
       padding-inline: {
         start: map.get(
-          $_md-comp-outlined-button,
+          $md-comp-outlined-button,
           'with-trailing-icon-leading-space'
         );
         end: map.get(
-          $_md-comp-outlined-button,
+          $md-comp-outlined-button,
           'with-trailing-icon-trailing-space'
         );
       }
-      height: map.get($_md-comp-outlined-button, 'container-height');
+      height: map.get($md-comp-outlined-button, 'container-height');
 
       .workspace-drawer-active-tab-title {
-        color: map.get($_md-comp-outlined-button, 'label-text-color');
-        font-family: map.get($_md-comp-outlined-button, 'label-text-font');
-        font-size: map.get($_md-comp-outlined-button, 'label-text-size');
-        font-weight: map.get($_md-comp-outlined-button, 'label-text-weight');
+        color: map.get($md-comp-outlined-button, 'label-text-color');
+        font-family: map.get($md-comp-outlined-button, 'label-text-font');
+        font-size: map.get($md-comp-outlined-button, 'label-text-size');
+        font-weight: map.get($md-comp-outlined-button, 'label-text-weight');
         line-height: map.get(
-          $_md-comp-outlined-button,
+          $md-comp-outlined-button,
           'label-text-line-height'
         );
       }
 
       .clickable-icon {
-        $size: map.get($_md-comp-outlined-button, 'icon-size');
+        $color: map.get($md-comp-outlined-button, 'icon-color');
+        $size: map.get($md-comp-outlined-button, 'icon-size');
 
-        color: map.get($_md-comp-outlined-button, 'icon-color');
+        color: $color;
         height: $size;
         padding: unset;
         width: $size;
+
+        svg {
+          display: none;
+        }
+
+        @include icons.dropdown-background($color, $size: $size);
       }
     }
   }

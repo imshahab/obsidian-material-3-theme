@@ -4,6 +4,10 @@
 @use 'pkg:@material/web/tokens/md-comp-list';
 @use 'pkg:@material/web/tokens/md-comp-list-item';
 @use 'pkg:@material/web/tokens/md-comp-suggestion-chip';
+@use 'pkg:@material/web/tokens/md-sys-elevation';
+@use 'pkg:@material/web/tokens/md-sys-shape';
+@use 'pkg:@material/web/tokens/md-sys-state';
+@use 'pkg:@material/web/tokens/md-sys-typescale';
 
 @use '../icons';
 @use '../tokens';
@@ -14,11 +18,28 @@ $_md-comp-dialog: md-comp-dialog.values();
 $_md-comp-icon-button: md-comp-icon-button.values();
 $_md-comp-list: md-comp-list.values();
 $_md-comp-list-item: md-comp-list-item.values();
-$_md-comp-search-bar: tokens.comp-search-bar-values();
 $_md-comp-sheet-bottom: tokens.comp-sheet-bottom-values();
 $_md-comp-suggestion-chip: md-comp-suggestion-chip.values();
 
-@mixin styles() {
+$_search-bar-deps: (
+  'md-sys-elevation': md-sys-elevation.values(),
+  'md-sys-shape': md-sys-shape.values(),
+  'md-sys-state': md-sys-state.values(),
+  'md-sys-typescale': md-sys-typescale.values(),
+);
+
+@mixin styles($md-sys-color) {
+  $deps: map.merge(
+    $_search-bar-deps,
+    (
+      'md-sys-color': $md-sys-color,
+    )
+  );
+  $md-comp-search-bar: tokens.comp-search-bar-values(
+    $deps,
+    $exclude-custom-properties: true
+  );
+
   &.is-phone {
     .modal.mod-settings {
       .modal-close-button {
@@ -165,27 +186,27 @@ $_md-comp-suggestion-chip: md-comp-suggestion-chip.values();
         width: 24px;
 
         @include icons.search-background(
-          map.get($_md-comp-search-bar, 'leading-icon-color')
+          map.get($md-comp-search-bar, 'leading-icon-color')
         );
       }
 
       .prompt-input {
         background-color: transparent;
         border: unset;
-        color: map.get($_md-comp-search-bar, 'input-text-color');
-        font-family: map.get($_md-comp-search-bar, 'input-text-font');
-        font-size: map.get($_md-comp-search-bar, 'input-text-size');
-        font-weight: map.get($_md-comp-search-bar, 'input-text-weight');
-        line-height: map.get($_md-comp-search-bar, 'input-text-line-height');
+        color: map.get($md-comp-search-bar, 'input-text-color');
+        font-family: map.get($md-comp-search-bar, 'input-text-font');
+        font-size: map.get($md-comp-search-bar, 'input-text-size');
+        font-weight: map.get($md-comp-search-bar, 'input-text-weight');
+        line-height: map.get($md-comp-search-bar, 'input-text-line-height');
         padding: unset;
 
         &::placeholder {
-          color: map.get($_md-comp-search-bar, 'supporting-text-color');
-          font-family: map.get($_md-comp-search-bar, 'supporting-text-font');
-          font-size: map.get($_md-comp-search-bar, 'supporting-text-size');
-          font-weight: map.get($_md-comp-search-bar, 'supporting-text-weight');
+          color: map.get($md-comp-search-bar, 'supporting-text-color');
+          font-family: map.get($md-comp-search-bar, 'supporting-text-font');
+          font-size: map.get($md-comp-search-bar, 'supporting-text-size');
+          font-weight: map.get($md-comp-search-bar, 'supporting-text-weight');
           line-height: map.get(
-            $_md-comp-search-bar,
+            $md-comp-search-bar,
             'supporting-text-line-height'
           );
         }
@@ -199,7 +220,7 @@ $_md-comp-suggestion-chip: md-comp-suggestion-chip.values();
         position: unset;
 
         &::after {
-          $color: map.get($_md-comp-search-bar, 'trailing-icon-color');
+          $color: map.get($md-comp-search-bar, 'trailing-icon-color');
 
           background-color: unset;
           height: 24px;
