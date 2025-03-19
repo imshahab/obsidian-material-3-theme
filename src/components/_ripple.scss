@@ -6,19 +6,23 @@
 @mixin theme($tokens) {
   $supported-tokens: tokens.$comp-ripple-supported-tokens;
 
-  @each $token, $value in $tokens {
-    @if list.index($supported-tokens, $token) == null {
-      @error 'Token `#{$token}` is not a supported token.';
-    }
+  & {
+    @each $token, $value in $tokens {
+      @if list.index($supported-tokens, $token) == null {
+        @error 'Token `#{$token}` is not a supported token.';
+      }
 
-    @if $value {
-      --md-ripple-#{$token}: #{$value};
+      @if $value {
+        --md-ripple-#{$token}: #{$value};
+      }
     }
   }
 }
 
 @mixin _root($tokens) {
-  position: relative;
+  & {
+    position: relative;
+  }
 }
 
 @mixin _normal($tokens) {
@@ -33,8 +37,10 @@
 }
 
 @mixin _hover($tokens) {
-  background-color: map.get($tokens, 'hover-color');
-  opacity: map.get($tokens, 'hover-opacity');
+  @media (hover: hover) {
+    background-color: map.get($tokens, 'hover-color');
+    opacity: map.get($tokens, 'hover-opacity');
+  }
 }
 
 @mixin _active($tokens) {
