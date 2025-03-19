@@ -8,6 +8,7 @@
 
 @use '../tokens';
 @use '../utils';
+@use 'ripple';
 
 $_md-comp-divider: md-comp-divider.values();
 $_md-comp-filled-card: md-comp-filled-card.values();
@@ -135,6 +136,25 @@ $_md-sys-typescale: md-sys-typescale.values();
           start: map.get($_md-comp-list-item, 'leading-space');
           end: map.get($_md-comp-list-item, 'trailing-space');
         }
+
+        &.mobile-tap {
+          background-color: unset;
+        }
+
+        @include ripple.theme(
+          (
+            'hover-color':
+              map.get($_md-comp-list-item, 'hover-state-layer-color'),
+            'hover-opacity':
+              map.get($_md-comp-list-item, 'hover-state-layer-opacity'),
+            'pressed-color':
+              map.get($_md-comp-list-item, 'pressed-state-layer-color'),
+            'pressed-opacity':
+              map.get($_md-comp-list-item, 'pressed-state-layer-opacity'),
+            'shape': var(--md-sys-shape-corner-none),
+          )
+        );
+        @include ripple.styles-after();
       }
     }
 
