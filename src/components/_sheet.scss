@@ -102,11 +102,10 @@ $_md-sys-typescale: md-sys-typescale.values();
           border-radius: map.get($_md-comp-filled-card, 'container-shape');
           display: flex;
           flex-direction: column;
-          font-family: map.get($_md-sys-typescale, 'title-large-font');
-          font-size: map.get($_md-sys-typescale, 'title-large-size');
-          font-weight: map.get($_md-sys-typescale, 'title-large-weight');
-          gap: 8px;
-          line-height: map.get($_md-sys-typescale, 'title-large-line-height');
+          font-family: map.get($_md-sys-typescale, 'body-large-font');
+          font-size: map.get($_md-sys-typescale, 'body-large-size');
+          font-weight: map.get($_md-sys-typescale, 'body-large-weight');
+          line-height: map.get($_md-sys-typescale, 'body-large-line-height');
           padding: 16px;
 
           div:first-child {
@@ -116,10 +115,10 @@ $_md-sys-typescale: md-sys-typescale.values();
           }
 
           .menu-item-desc {
-            font-family: map.get($_md-sys-typescale, 'body-large-font');
-            font-size: map.get($_md-sys-typescale, 'body-large-size');
-            font-weight: map.get($_md-sys-typescale, 'body-large-weight');
-            line-height: map.get($_md-sys-typescale, 'body-large-line-height');
+            font-family: map.get($_md-sys-typescale, 'body-medium-font');
+            font-size: map.get($_md-sys-typescale, 'body-medium-size');
+            font-weight: map.get($_md-sys-typescale, 'body-medium-weight');
+            line-height: map.get($_md-sys-typescale, 'body-medium-line-height');
             padding: unset;
           }
         }
