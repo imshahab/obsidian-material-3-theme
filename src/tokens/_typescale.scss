@@ -1,0 +1,20 @@
+@use 'sass:list';
+@use 'sass:map';
+@use 'pkg:@material/web/tokens/md-ref-typeface';
+@use 'pkg:@material/web/tokens/md-sys-typescale';
+@use 'pkg:@material/web/typography/typescale';
+
+$_default: (
+  'md-ref-typeface': md-ref-typeface.values($exclude-custom-properties: true),
+);
+
+@function values($deps: $_default, $exclude-custom-properties: false) {
+  @return md-sys-typescale.values(
+    $deps,
+    $exclude-custom-properties: $exclude-custom-properties
+  );
+}
+
+:root {
+  @include typescale.theme(values($exclude-custom-properties: true));
+}

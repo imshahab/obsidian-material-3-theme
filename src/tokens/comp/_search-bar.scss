@@ -6,17 +6,17 @@
 @use 'pkg:@material/web/tokens/md-sys-elevation';
 @use 'pkg:@material/web/tokens/md-sys-shape';
 @use 'pkg:@material/web/tokens/md-sys-state';
-@use 'pkg:@material/web/tokens/md-sys-typescale';
 @use 'pkg:@material/web/tokens/internal/validate';
 
 @use '../colors';
+@use '../typescale';
 
 $_default: (
   'md-sys-color': colors.values-light(),
   'md-sys-elevation': md-sys-elevation.values(),
   'md-sys-shape': md-sys-shape.values(),
   'md-sys-state': md-sys-state.values(),
-  'md-sys-typescale': md-sys-typescale.values(),
+  'md-sys-typescale': typescale.values(),
 );
 
 $supported-tokens: (

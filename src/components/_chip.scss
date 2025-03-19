@@ -3,7 +3,6 @@
 @use 'pkg:@material/web/tokens/md-sys-elevation';
 @use 'pkg:@material/web/tokens/md-sys-shape';
 @use 'pkg:@material/web/tokens/md-sys-state';
-@use 'pkg:@material/web/tokens/md-sys-typescale';
 
 @use '../icons';
 @use '../tokens';
@@ -15,7 +14,7 @@ $_input-chip-deps: (
   'md-sys-elevation': md-sys-elevation.values(),
   'md-sys-shape': md-sys-shape.values(),
   'md-sys-state': md-sys-state.values(),
-  'md-sys-typescale': md-sys-typescale.values(),
+  'md-sys-typescale': tokens.typescale-values(),
 );
 
 @mixin styles($md-sys-color) {

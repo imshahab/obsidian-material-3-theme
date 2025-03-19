@@ -4,7 +4,6 @@
 @use 'pkg:@material/web/tokens/md-comp-icon';
 @use 'pkg:@material/web/tokens/md-comp-list';
 @use 'pkg:@material/web/tokens/md-comp-list-item';
-@use 'pkg:@material/web/tokens/md-sys-typescale';
 
 @use '../tokens';
 @use '../utils';
@@ -16,7 +15,7 @@ $_md-comp-icon: md-comp-icon.values();
 $_md-comp-list: md-comp-list.values();
 $_md-comp-list-item: md-comp-list-item.values();
 $_md-comp-sheet-bottom: tokens.comp-sheet-bottom-values();
-$_md-sys-typescale: md-sys-typescale.values();
+$_md-sys-typescale: tokens.typescale-values();
 
 @mixin styles() {
   &.is-phone {
@@ -102,10 +101,10 @@ $_md-sys-typescale: md-sys-typescale.values();
           border-radius: map.get($_md-comp-filled-card, 'container-shape');
           display: flex;
           flex-direction: column;
-          font-family: map.get($_md-sys-typescale, 'body-large-font');
-          font-size: map.get($_md-sys-typescale, 'body-large-size');
-          font-weight: map.get($_md-sys-typescale, 'body-large-weight');
-          line-height: map.get($_md-sys-typescale, 'body-large-line-height');
+          font-family: var(--md-sys-typescale-body-large-font);
+          font-size: var(--md-sys-typescale-body-large-size);
+          font-weight: var(--md-sys-typescale-body-large-weight);
+          line-height: var(--md-sys-typescale-body-large-line-height);
           padding: 16px;
 
           div:first-child {
@@ -115,10 +114,10 @@ $_md-sys-typescale: md-sys-typescale.values();
           }
 
           .menu-item-desc {
-            font-family: map.get($_md-sys-typescale, 'body-medium-font');
-            font-size: map.get($_md-sys-typescale, 'body-medium-size');
-            font-weight: map.get($_md-sys-typescale, 'body-medium-weight');
-            line-height: map.get($_md-sys-typescale, 'body-medium-line-height');
+            font-family: var(--md-sys-typescale-body-medium-font);
+            font-size: var(--md-sys-typescale-body-medium-size);
+            font-weight: var(--md-sys-typescale-body-medium-weight);
+            line-height: var(--md-sys-typescale-body-medium-line-height);
             padding: unset;
           }
         }

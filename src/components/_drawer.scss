@@ -3,7 +3,6 @@
 @use 'pkg:@material/web/tokens/md-comp-outlined-button';
 @use 'pkg:@material/web/tokens/md-sys-shape';
 @use 'pkg:@material/web/tokens/md-sys-state';
-@use 'pkg:@material/web/tokens/md-sys-typescale';
 
 @use '../icons';
 @use '../tokens';
@@ -12,7 +11,7 @@
 $_outlined-button-deps: (
   'md-sys-shape': md-sys-shape.values(),
   'md-sys-state': md-sys-state.values(),
-  'md-sys-typescale': md-sys-typescale.values(),
+  'md-sys-typescale': tokens.typescale-values(),
 );
 $_md-sys-shape: md-sys-shape.values();
 

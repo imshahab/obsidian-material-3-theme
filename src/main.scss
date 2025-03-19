@@ -582,7 +582,7 @@ body {
       ),
     'md-sys-state': md-tokens.md-sys-state-values(),
     'md-sys-typescale':
-      md-tokens.md-sys-typescale-values(
+      tokens.typescale-values(
         $exclude-custom-properties: true,
       ),
   );
