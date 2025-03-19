@@ -151,6 +151,7 @@ $_md-comp-suggestion-chip: md-comp-suggestion-chip.values();
     .prompt-input-container {
       align-items: center;
       background-color: var(--md-sys-color-surface-container-high);
+      border: unset;
       border-radius: var(--md-sys-shape-corner-full);
       gap: 16px;
       margin-block: 8px;
