@@ -199,8 +199,9 @@ $_default-light: (
 }
 
 :root {
-  --md-key-colors-primary: rgb(134, 88, 255);
-  --md-source-seed: rgb(134, 88, 255);
+  /* Primary accent color changed to LineageOS teal */
+  --md-key-colors-primary: rgb(0, 150, 136);
+  --md-source-seed: rgb(0, 150, 136);
   --md-extended-green-seed: rgb(8, 185, 78);
   --md-extended-green-value: rgb(0, 183, 126);
   --md-extended-red-seed: rgb(233, 49, 71);
