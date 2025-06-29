@@ -4,6 +4,9 @@
 
 This repository hosts a [Material 3](https://m3.material.io/) theme for the [Obsidian](https://obsidian.md/) note-taking tool.
 
+The primary accent color has been updated to match **LineageOS teal** (`#009688`).
+Rebuild the theme via `npm run build` after cloning to generate `theme.css`.
+
 *Due to limitations, this theme does not support dynamic color on Android.* Therefore, the color schemes of this theme were generated based on Obsidian's brand colors.
 
 ## Manual installation

@@ -6,7 +6,8 @@ import {
 
 import json2scss from 'json2scss-map';
 
-const OBSIDIAN_PURPLE_ARGB = 0xff8758ff;
+// Seed color changed to LineageOS teal
+const OBSIDIAN_PURPLE_ARGB = 0xff009688;
 const PALETTE_SUPPORTED_TOKENS = [
   'black',
   'error0',
